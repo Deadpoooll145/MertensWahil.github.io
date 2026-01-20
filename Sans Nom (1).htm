@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahil Mertens - Portfolio GEII</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        primary: '#3b82f6',  
+                        accent: '#10b981',    
+                        dark: '#0a0a0a',      
+                        card: '#171717',      
+                        surface: '#262626'    
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #1d4ed8, #3b82f6);
+            border-radius: 5px;
+            border: 2px solid #0a0a0a;
+        }
+        .glass-nav {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tech-badge {
+            @apply px-3 py-1.5 bg-surface/50 rounded-md text-xs font-mono text-blue-300 border border-white/10 transition-colors hover:bg-surface hover:border-primary/30;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            transform: scale(0.95);
+            transition: transform 0.3s ease-out;
+        }
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+        
+        /* Accordion Styles */
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), padding 0.5s ease, opacity 0.4s ease;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .accordion-content.open {
+            max-height: 2000px; /* Assez grand pour tout le contenu */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .chevron {
+            transition: transform 0.3s ease;
+        }
+        .chevron.rotate {
+            transform: rotate(180deg);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #10b981);
+        }
+    </style>
+</head>
+<body class="bg-dark text-gray-300 font-sans antialiased selection:bg-primary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3 group cursor-pointer">
+                    <div class="p-2 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors duration-300">
+                        <i data-lucide="cpu" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <span class="text-xl font-bold tracking-tight text-white group-hover:text-primary transition-colors duration-300">
+                        Wahil<span class="text-primary">.Mertens</span>
+                    </span>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#accueil" class="hover:text-primary transition px-3 py-2 text-sm font-medium">Accueil</a>
+                        <a href="#projets" class="hover:text-primary transition px-3 py-2 text-sm font-medium">Projets</a>
+                        <a href="#parcours" class="hover:text-primary transition px-3 py-2 text-sm font-medium">Parcours</a>
+                        <a href="#competences" class="hover:text-primary transition px-3 py-2 text-sm font-medium">Comp&eacute;tences</a>
+                        <a href="#contact" class="bg-primary hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition text-sm font-medium shadow-lg shadow-blue-900/20">Contact</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-zinc-900 border-b border-zinc-800" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#accueil" class="block hover:bg-zinc-800 px-3 py-2 rounded-md text-base font-medium">Accueil</a>
+                <a href="#projets" class="block hover:bg-zinc-800 px-3 py-2 rounded-md text-base font-medium">Projets</a>
+                <a href="#parcours" class="block hover:bg-zinc-800 px-3 py-2 rounded-md text-base font-medium">Parcours</a>
+                <a href="#contact" class="block text-primary hover:bg-zinc-800 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="min-h-screen flex items-center justify-center pt-16 relative overflow-hidden bg-black">
+        
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <!-- Image libre de droit (Unsplash) : PCB / Circuit électronique -->
+            <img src="https://images.unsplash.com/photo-1592659762303-90081d34b277?q=80&w=2070&auto=format&fit=crop"
+                 alt="Circuit électronique background"
+                 class="w-full h-full object-cover opacity-30 select-none">
+            <!-- Dégradé pour fondre l'image dans le noir et assurer la lisibilité -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent"></div>
+        </div>
+
+        <!-- Abstract Tech Background Overlay -->
+        <div class="absolute inset-0 opacity-20 z-0" style="background-image: radial-gradient(#2563eb 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[120px] z-0"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-64 h-64 bg-accent/5 rounded-full blur-[100px] z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-2xl">
+                Wahil Mertens
+            </h1>
+            <h2 class="text-2xl md:text-3xl text-gray-300 mb-8 font-light drop-shadow-lg">
+                &Eacute;tudiant en <span class="text-primary font-semibold">G&eacute;nie &Eacute;lectrique</span> & <span class="text-accent font-semibold">Syst&egrave;mes Embarqu&eacute;s</span>
+            </h2>
+            
+            <p class="max-w-2xl mx-auto text-lg text-gray-300 mb-10 leading-relaxed drop-shadow-md">
+                Actuellement en 3&egrave;me ann&eacute;e de BUT GEII. Passionn&eacute; par la conception &eacute;lectronique, la programmation embarqu&eacute;e et l'automatisme.
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-primary hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 border border-transparent shadow-lg shadow-blue-900/30 backdrop-blur-sm hover:scale-105 duration-200">
+                    <i data-lucide="mail" class="w-5 h-5"></i> Me contacter
+                </a>
+                <a href="#projets" class="bg-black/40 backdrop-blur-md border border-zinc-700 hover:border-white hover:bg-white/10 text-gray-300 hover:text-white px-8 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 hover:scale-105 duration-200">
+                    <i data-lucide="code-2" class="w-5 h-5"></i> Voir mes r&eacute;alisations
+                </a>
+                <!-- Bouton CV -->
+                <a href="CV_Wahil_MERTENS.pdf" target="_blank" class="bg-zinc-800/80 backdrop-blur-md border border-zinc-600 hover:border-accent hover:text-accent text-gray-300 px-8 py-3 rounded-lg font-semibold transition flex items-center justify-center gap-2 hover:scale-105 duration-200">
+                    <i data-lucide="download" class="w-5 h-5"></i> Mon CV
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projets" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-2">
+                <i data-lucide="folder-kanban" class="text-primary"></i> Projets R&eacute;alis&eacute;s
+            </h2>
+
+            <!-- Station Météo -->
+            <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-primary/50 hover:shadow-2xl hover:shadow-blue-900/10 transition group flex flex-col mb-12">
+                <div class="h-64 bg-zinc-800/50 flex items-center justify-center relative overflow-hidden group-hover:bg-zinc-800 transition">
+                    <!-- IMAGE PROJET LORA -->
+                    <img src="images/image_SAE_Lorawan.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="LoRaWAN" onerror="this.src='https://via.placeholder.com/800x400?text=Projet+LoRaWAN'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-90"></div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-2xl font-bold text-white group-hover:text-primary transition">Station M&eacute;t&eacute;o Connect&eacute;e (IoT)</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Syst&egrave;me IoT de surveillance environnementale autonome.</p>
+                    <ul class="text-sm text-gray-300 space-y-2 mb-6 list-disc list-inside marker:text-primary">
+                        <li>Transmission <strong>LoRaWAN</strong>.</li>
+                        <li>Capteur <strong>SHT31</strong>.</li>
+                        <li>Microcontr&ocirc;leur <strong>STM32</strong>.</li>
+                    </ul>
+                    <div class="mt-auto">
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="tech-badge">KiCad</span>
+                            <span class="tech-badge">STM32</span>
+                            <span class="tech-badge">LoRa</span>
+                        </div>
+                        <button class="w-full py-2 bg-blue-900/30 text-blue-300 border border-blue-800 rounded-lg hover:bg-blue-800/50 transition text-sm font-medium flex items-center justify-center gap-2" onclick="openModal('modal-lora')">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Voir d&eacute;tails techniques
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Oscilloscope -->
+            <div class="bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-accent/50 hover:shadow-2xl hover:shadow-green-900/10 transition group flex flex-col mb-12">
+                <div class="h-64 bg-zinc-800/50 flex items-center justify-center relative overflow-hidden group-hover:bg-zinc-800 transition">
+                     <!-- IMAGE PROJET OSCILLO -->
+                    <img src="images/image-PID-Proteus.png" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-500" alt="Oscillo" onerror="this.src='https://via.placeholder.com/800x400?text=Projet+Oscillo'">
+                    <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-transparent to-transparent opacity-90"></div>
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-2xl font-bold text-white group-hover:text-accent transition">Oscilloscope Num&eacute;rique</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Conception d'un oscilloscope complet de A &agrave; Z.</p>
+                    <ul class="text-sm text-gray-300 space-y-2 mb-6 list-disc list-inside marker:text-accent">
+                        <li>Conditionnement analogique (AOP, Relais).</li>
+                        <li>Traitement num&eacute;rique sur <strong>STM32</strong>.</li>
+                        <li>Simulation Proteus ISIS.</li>
+                    </ul>
+                    <div class="mt-auto">
+                        <div class="flex gap-2 flex-wrap mb-4">
+                            <span class="tech-badge">Proteus</span>
+                            <span class="tech-badge">AOP</span>
+                            <span class="tech-badge">C Embarqu&eacute;</span>
+                        </div>
+                        <button class="w-full py-2 bg-green-900/30 text-green-300 border border-green-800 rounded-lg hover:bg-green-800/50 transition text-sm font-medium flex items-center justify-center gap-2" onclick="openModal('modal-oscillo')">
+                            <i data-lucide="eye" class="w-4 h-4"></i> Voir d&eacute;tails techniques
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Parcours Professionnel (Accordion Style du pote, Contenu Wahil) -->
+    <section id="parcours" class="py-20 bg-zinc-900/20 border-t border-zinc-800">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-16 text-center">
+                <i data-lucide="briefcase" class="inline-block w-8 h-8 mr-2 text-primary"></i> Parcours Professionnel
+            </h2>
+            
+            <div class="relative border-l-2 border-zinc-800 ml-3 md:ml-6 space-y-12">
+                
+                <!-- IPN (Mexique) -->
+                <div class="relative pl-8 md:pl-12 group cursor-pointer" onclick="toggleSection('exp-ipn', 'icon-ipn')">
+                    <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-primary border-4 border-black box-content shadow-[0_0_10px_rgba(59,130,246,0.5)] group-hover:scale-110 transition"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <div class="flex items-center gap-4">
+                            <img src="images/logo-upec.jpg" class="w-12 h-12 bg-white rounded object-contain p-1" alt="IPN" onerror="this.style.display='none'">
+                            <h4 class="text-xl font-bold text-white group-hover:text-primary transition">Stagiaire Syst&egrave;mes Automatiques</h4>
+                        </div>
+                        <span class="text-sm text-blue-400 font-mono bg-blue-900/20 border border-blue-900/50 px-2 py-1 rounded">Avril - Juin 2025</span>
+                    </div>
+                    <div class="text-gray-400 font-medium mb-2 pl-16">Instituto Polit&eacute;cnico Nacional (Mexique) <i data-lucide="chevron-down" id="icon-ipn" class="w-4 h-4 inline-block ml-2 transition-transform duration-300"></i></div>
+                    
+                    <div id="exp-ipn" class="accordion-content bg-zinc-800/30 p-4 rounded-lg border-l-4 border-primary mt-2 ml-16">
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+                            <li>Conception d'un syst&egrave;me d'asservissement thermique pour moteur automobile.</li>
+                            <li>Mod&eacute;lisation et simulation sous <strong>Matlab/Simulink</strong>.</li>
+                            <li>Impl&eacute;mentation d'un correcteur <strong>PID</strong> (Ziegler-Nichols).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Riester -->
+                <div class="relative pl-8 md:pl-12 group cursor-pointer" onclick="toggleSection('exp-riester', 'icon-riester')">
+                    <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-orange-600 border-4 border-black box-content group-hover:scale-110 transition"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <div class="flex items-center gap-4">
+                            <img src="images/logo-groupe-riester.jpg" class="w-12 h-12 bg-white rounded object-contain p-1" alt="Riester">
+                            <h4 class="text-xl font-bold text-white group-hover:text-orange-400 transition">Stagiaire M&eacute;canicien Automobile</h4>
+                        </div>
+                        <span class="text-sm text-orange-400 font-mono bg-orange-900/20 border border-orange-900/50 px-2 py-1 rounded">Juil - Ao&ucirc;t 2024</span>
+                    </div>
+                    <div class="text-gray-400 font-medium mb-2 pl-16">Groupe Riester (Stellantis) <i data-lucide="chevron-down" id="icon-riester" class="w-4 h-4 inline-block ml-2 transition-transform duration-300"></i></div>
+                    
+                    <div id="exp-riester" class="accordion-content bg-zinc-800/30 p-4 rounded-lg border-l-4 border-orange-600 mt-2 ml-16">
+                        <ul class="list-disc list-inside text-gray-400 text-sm space-y-2">
+                            <li>Diagnostic &eacute;lectronique (Diagbox, Witech).</li>
+                            <li>R&eacute;paration v&eacute;hicules <strong>hybrides et &eacute;lectriques</strong>.</li>
+                            <li>Remplacement batterie traction (Jeep Wrangler).</li>
+                        </ul>
+                         <div class="mt-4 grid grid-cols-2 gap-4">
+                            <img src="images/image-garage-groupe-reister.jpg" class="rounded border border-white/10" onerror="this.style.display='none'">
+                            <img src="images/image-moteur-electrique.jpg" class="rounded border border-white/10" onerror="this.style.display='none'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Leroy Merlin -->
+                <div class="relative pl-8 md:pl-12 group cursor-pointer" onclick="toggleSection('exp-lm', 'icon-lm')">
+                    <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-green-500 border-4 border-black box-content group-hover:scale-110 transition"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <div class="flex items-center gap-4">
+                            <img src="images/logo-leroy-merlin.jpg" class="w-12 h-12 bg-white rounded object-contain p-1" alt="LM">
+                            <h4 class="text-xl font-bold text-white group-hover:text-green-400 transition">Op&eacute;rateur Logistique</h4>
+                        </div>
+                        <span class="text-sm text-green-400 font-mono bg-green-900/20 border border-green-900/50 px-2 py-1 rounded">&Eacute;t&eacute; 2024</span>
+                    </div>
+                    <div class="text-gray-400 font-medium mb-2 pl-16">Leroy Merlin <i data-lucide="chevron-down" id="icon-lm" class="w-4 h-4 inline-block ml-2 transition-transform duration-300"></i></div>
+                    <div id="exp-lm" class="accordion-content bg-zinc-800/30 p-4 rounded-lg border-l-4 border-green-500 mt-2 ml-16">
+                        <p class="text-gray-400 text-sm">Pr&eacute;paration de commandes (retrait & exp&eacute;dition) et gestion des flux.</p>
+                    </div>
+                </div>
+
+                <!-- Decathlon -->
+                <div class="relative pl-8 md:pl-12 group cursor-pointer" onclick="toggleSection('exp-deca', 'icon-deca')">
+                    <div class="absolute -left-[9px] top-2 w-4 h-4 rounded-full bg-blue-400 border-4 border-black box-content group-hover:scale-110 transition"></div>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2">
+                        <div class="flex items-center gap-4">
+                            <img src="images/logo-decathlon.jpg" class="w-12 h-12 bg-white rounded object-contain p-1" alt="Decathlon">
+                            <h4 class="text-xl font-bold text-white group-hover:text-blue-300 transition">Magasinier</h4>
+                        </div>
+                        <span class="text-sm text-blue-300 font-mono bg-blue-900/20 border border-blue-900/50 px-2 py-1 rounded">Juil 23 - Jan 24</span>
+                    </div>
+                    <div class="text-gray-400 font-medium mb-2 pl-16">D&eacute;cathlon <i data-lucide="chevron-down" id="icon-deca" class="w-4 h-4 inline-block ml-2 transition-transform duration-300"></i></div>
+                    <div id="exp-deca" class="accordion-content bg-zinc-800/30 p-4 rounded-lg border-l-4 border-blue-400 mt-2 ml-16">
+                        <p class="text-gray-400 text-sm">R&eacute;ception marchandises, gestion de stock, inventaires.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETENCES (Style Henry - Liste Complète Wahil) -->
+    <section id="competences" class="py-24 bg-black border-y border-zinc-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-white mb-16 flex items-center gap-3">
+                <i data-lucide="boxes" class="text-primary w-10 h-10"></i> Comp&eacute;tences Techniques
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Carte 1 -->
+                <div class="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800 hover:border-blue-500 transition duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-blue-500/10 rounded-lg group-hover:bg-blue-500/20 transition">
+                            <i data-lucide="cpu" class="w-8 h-8 text-blue-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">&Eacute;lectronique & Outils</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-blue-300 font-mono border border-zinc-700">KiCad (PCB)</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-blue-300 font-mono border border-zinc-700">Amplificateurs</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-blue-300 font-mono border border-zinc-700">Filtres</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-blue-300 font-mono border border-zinc-700">CAN / CNA</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-blue-300 font-mono border border-zinc-700">STM32</span>
+                    </div>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800 hover:border-purple-500 transition duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition">
+                            <i data-lucide="code-2" class="w-8 h-8 text-purple-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Simulation & Soft</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-purple-300 font-mono border border-zinc-700">Matlab</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-purple-300 font-mono border border-zinc-700">Simulink</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-purple-300 font-mono border border-zinc-700">Proteus ISIS</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-purple-300 font-mono border border-zinc-700">Scilab</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-purple-300 font-mono border border-zinc-700">Langage C</span>
+                    </div>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800 hover:border-yellow-500 transition duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-yellow-500/10 rounded-lg group-hover:bg-yellow-500/20 transition">
+                            <i data-lucide="zap" class="w-8 h-8 text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">&Eacute;nergie & Auto</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-yellow-300 font-mono border border-zinc-700">Triphas&eacute;</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-yellow-300 font-mono border border-zinc-700">Habilitation &Eacute;lec</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-yellow-300 font-mono border border-zinc-700">R&eacute;gulation PID</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-yellow-300 font-mono border border-zinc-700">Magn&eacute;tisme</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-yellow-300 font-mono border border-zinc-700">LoRaWAN</span>
+                    </div>
+                </div>
+
+                <!-- Carte 4 -->
+                <div class="bg-zinc-900/50 p-8 rounded-2xl border border-zinc-800 hover:border-red-500 transition duration-500 group">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="p-3 bg-red-500/10 rounded-lg group-hover:bg-red-500/20 transition">
+                            <i data-lucide="wrench" class="w-8 h-8 text-red-400"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">M&eacute;canique</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-red-300 font-mono border border-zinc-700">Diagnostic Panne</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-red-300 font-mono border border-zinc-700">Vidange / Filtres</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-red-300 font-mono border border-zinc-700">Valise Diagbox</span>
+                        <span class="px-4 py-2 bg-zinc-800 rounded-lg text-red-300 font-mono border border-zinc-700">V&eacute;hicules Hybrides</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <section id="contact" class="py-20 bg-black border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-8">Me Contacter</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <a href="mailto:mertenswahil@gmail.com" class="p-6 bg-zinc-900 rounded-xl hover:bg-zinc-800 transition flex flex-col items-center gap-3 group border border-zinc-800 hover:border-primary/50 group">
+                    <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition group-hover:shadow-[0_0_15px_rgba(37,99,235,0.3)]">
+                        <i data-lucide="mail" class="text-primary w-6 h-6"></i>
+                    </div>
+                    <span class="text-gray-300 text-sm break-all font-medium group-hover:text-white transition">Email</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/wahil-mertens-a90726270" target="_blank" class="p-6 bg-zinc-900 rounded-xl hover:bg-zinc-800 transition flex flex-col items-center gap-3 group border border-zinc-800 hover:border-blue-400/50 group">
+                    <div class="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center group-hover:bg-blue-500/20 transition group-hover:shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                        <i data-lucide="linkedin" class="text-blue-500 w-6 h-6"></i>
+                    </div>
+                    <span class="text-gray-300 text-sm font-medium group-hover:text-white transition">LinkedIn</span>
+                </a>
+
+                <a href="tel:+33768317163" class="p-6 bg-zinc-900 rounded-xl hover:bg-zinc-800 transition flex flex-col items-center gap-3 group border border-zinc-800 hover:border-accent/50 group">
+                    <div class="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center group-hover:bg-accent/20 transition group-hover:shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                        <i data-lucide="phone" class="text-accent w-6 h-6"></i>
+                    </div>
+                    <span class="text-gray-300 text-sm font-medium group-hover:text-white transition">07 68 31 71 63</span>
+                </a>
+
+                <div class="p-6 bg-zinc-900 rounded-xl flex flex-col items-center gap-3 border border-zinc-800">
+                    <div class="w-12 h-12 bg-zinc-800 rounded-full flex items-center justify-center">
+                        <i data-lucide="map-pin" class="text-gray-400 w-6 h-6"></i>
+                    </div>
+                    <span class="text-gray-300 text-sm font-medium">Paris, France</span>
+                </div>
+            </div>
+            
+            <p class="text-gray-600 text-sm">
+                &copy; 2025 Wahil Mertens. Tous droits r&eacute;serv&eacute;s.
+            </p>
+        </div>
+    </section>
+
+    <!-- Modale LoRa (Avec ton image) -->
+    <div id="modal-lora" class="modal fixed inset-0 hidden flex items-center justify-center bg-black bg-opacity-80 z-50">
+        <div class="bg-zinc-900 rounded-lg shadow-lg w-full max-w-4xl p-6 relative max-h-[90vh] overflow-y-auto flex flex-col md:flex-row gap-6">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-white close-modal"><i data-lucide="x"></i></button>
+            <div class="w-full md:w-1/2">
+                <img src="images/image_SAE_Lorawan.png" class="w-full rounded-lg object-cover" onerror="this.src='https://via.placeholder.com/600x400?text=Image+Projet'">
+            </div>
+            <div class="w-full md:w-1/2">
+                <h2 class="text-2xl font-bold text-white mb-2">Station M&eacute;t&eacute;o IoT</h2>
+                <p class="text-blue-400 text-sm mb-4">Projet Acad&eacute;mique S4</p>
+                <div class="space-y-4 text-gray-300">
+                    <p>D&eacute;veloppement d'un objet connect&eacute; autonome pour mesurer T° et Humidit&eacute;.</p>
+                    <ul class="list-disc list-inside">
+                        <li><strong>PCB :</strong> Conception KiCad 2 couches.</li>
+                        <li><strong>Code :</strong> C embarqu&eacute; sur STM32 Nucleo.</li>
+                        <li><strong>R&eacute;seau :</strong> LoRaWAN via The Things Network (TTN).</li>
+                    </ul>
+                    <img src="images/dashboard_client_lorawan.jpg" class="w-full rounded-lg mt-4 border border-white/10" onerror="this.style.display='none'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale Oscillo -->
+    <div id="modal-oscillo" class="modal fixed inset-0 hidden flex items-center justify-center bg-black bg-opacity-80 z-50">
+        <div class="bg-zinc-900 rounded-lg shadow-lg w-full max-w-md p-6 relative">
+            <button class="absolute top-4 right-4 text-gray-400 hover:text-white close-modal"><i data-lucide="x"></i></button>
+            <h2 class="text-xl font-bold text-white mb-4">Oscilloscope Num&eacute;rique</h2>
+            <div class="space-y-4 text-gray-300">
+                <p>Syst&egrave;me complet d'acquisition : &Eacute;tage analogique (AOP), protection et traitement num&eacute;rique sur STM32.</p>
+                <img src="images/image-PID-Proteus.png" class="w-full rounded-lg border border-white/10" onerror="this.style.display='none'">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        // Modals Logic
+        function openModal(id) {
+            const m = document.getElementById(id);
+            m.classList.remove('hidden');
+            setTimeout(() => m.classList.add('active'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        document.querySelectorAll('.close-modal').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const modal = this.closest('.modal');
+                modal.classList.remove('active');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Accordion Logic
+        function toggleSection(id, iconId) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(iconId);
+            content.classList.toggle('open');
+            icon.classList.toggle('rotate-180');
+        }
+    </script>
+</body>
+</html>
