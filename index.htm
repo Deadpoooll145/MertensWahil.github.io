@@ -26,6 +26,7 @@
                         gold: '#fbbf24', 
                         dark: '#020202',
                         zinc900: '#09090b',
+                        zinc800: '#18181b',
                         glass: 'rgba(255, 255, 255, 0.03)',
                         glassBorder: 'rgba(255, 255, 255, 0.08)',
                     },
@@ -43,10 +44,10 @@
     </script>
 
     <style>
-        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #020202; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 5px; border: 2px solid #020202; }
+        ::-webkit-scrollbar-thumb:hover { background: #666; }
 
         body { background-color: #020202; color: #e5e5e5; overflow-x: hidden; }
         
@@ -229,6 +230,7 @@
                 <div class="glass-panel rounded-3xl group overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                     <div class="p-10 flex flex-col md:flex-row items-center gap-8 cursor-pointer" onclick="toggleSection('edu-licence', 'icon-licence')">
                         <div class="w-24 h-24 bg-white rounded-2xl p-2 flex items-center justify-center shrink-0 shadow-lg">
+                            <!-- LOGO UPEC -->
                             <img src="./images/logo-upec.jpg" class="w-full h-full object-contain" alt="UPEC" onerror="this.style.display='none'">
                         </div>
                         <div class="flex-grow text-center md:text-left">
@@ -266,7 +268,7 @@
                                     <p class="text-cyan-400 font-mono text-sm mt-1">IPN Mexique | 2025</p>
                                 </div>
                             </div>
-                            <ul class="text-gray-400 text-sm list-disc list-inside space-y-2 text-base">
+                            <ul class="text-gray-300 list-disc list-inside space-y-2 text-base">
                                 <li>Conception syst&egrave;me d'asservissement thermique.</li>
                                 <li>Mod&eacute;lisation Matlab/Simulink.</li>
                                 <li>R&eacute;gulation PID avanc&eacute;e.</li>
@@ -287,7 +289,7 @@
                                 </div>
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-riester.jpg" class="w-full h-full object-contain" alt="Riester" onerror="this.style.display='none'"></div>
                             </div>
-                            <ul class="text-gray-400 text-sm list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
+                            <ul class="text-gray-300 list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
                                 <li dir="ltr">Diagnostic &eacute;lectronique approfondi.</li>
                                 <li dir="ltr">Maintenance v&eacute;hicules hybrides.</li>
                                 <li dir="ltr">Gestion batteries haute tension.</li>
@@ -308,7 +310,7 @@
                                     <p class="text-green-500 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
                                 </div>
                             </div>
-                            <ul class="text-gray-400 text-sm list-disc list-inside space-y-2 text-base">
+                            <ul class="text-gray-300 list-disc list-inside space-y-2 text-base">
                                 <li>Gestion des flux entrants/sortants.</li>
                                 <li>Pr&eacute;paration de commandes et exp&eacute;dition.</li>
                                 <li>Optimisation de l'espace de stockage.</li>
@@ -329,10 +331,9 @@
                                 </div>
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-decathlon.jpg" class="w-full h-full object-contain" alt="Decath" onerror="this.style.display='none'"></div>
                             </div>
-                            <ul class="text-gray-400 text-sm list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
+                            <ul class="text-gray-300 list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
                                 <li dir="ltr">R&eacute;ception marchandises.</li>
-                                <li dir="ltr">Inventaires tournants.</li>
-                                <li dir="ltr">Gestion informatis&eacute;e de stock.</li>
+                                <li dir="ltr">Gestion de stock.</li>
                             </ul>
                         </div>
                     </div>
@@ -361,8 +362,9 @@
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-primary transition">Station IoT LoRaWAN</h3>
                             <p class="text-gray-400 mb-6 leading-relaxed text-lg">Système complet de surveillance environnementale. Capteurs I2C, Microcontrôleur STM32 et transmission radio.</p>
                             <div class="flex gap-3">
-                                <span class="text-xs border border-blue-500/50 text-blue-400 px-4 py-1.5 rounded-full bg-blue-500/10">KiCad</span>
-                                <span class="text-xs border border-blue-500/50 text-blue-400 px-4 py-1.5 rounded-full bg-blue-500/10">STM32</span>
+                                <span class="skill-badge skill-blue">KiCad</span>
+                                <span class="skill-badge skill-blue">SHT31</span>
+                                <span class="skill-badge skill-blue">LoRa</span>
                             </div>
                         </div>
                     </div>
@@ -382,8 +384,10 @@
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-accent transition">Oscilloscope Numérique</h3>
                             <p class="text-gray-400 mb-6 leading-relaxed text-lg">Conception d'un outil de mesure. Chaîne d'acquisition analogique (AOP), filtrage et numérisation.</p>
                             <div class="flex gap-3">
-                                <span class="text-xs border border-green-500/50 text-green-400 px-4 py-1.5 rounded-full bg-green-500/10">Proteus</span>
-                                <span class="text-xs border border-green-500/50 text-green-400 px-4 py-1.5 rounded-full bg-green-500/10">C</span>
+                                <span class="skill-badge skill-blue">Analogique</span>
+                                <span class="skill-badge skill-blue">PCB</span>
+                                <span class="skill-badge skill-blue">TLV272</span>
+                                <span class="skill-badge skill-blue">Python</span>
                             </div>
                         </div>
                     </div>
@@ -396,8 +400,8 @@
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-gold transition">Robot Mobile</h3>
                             <p class="text-gray-400 mb-6 leading-relaxed text-lg">Robot éviteur d'obstacles autonome. Programmation Arduino C++ et intégration capteurs.</p>
                              <div class="flex gap-3">
-                                <span class="text-xs border border-orange-500/50 text-orange-400 px-4 py-1.5 rounded-full bg-orange-500/10">Arduino</span>
-                                <span class="text-xs border border-orange-500/50 text-orange-400 px-4 py-1.5 rounded-full bg-orange-500/10">C++</span>
+                                <span class="skill-badge skill-yellow">Arduino</span>
+                                <span class="skill-badge skill-yellow">C++</span>
                             </div>
                         </div>
                     </div>
@@ -516,7 +520,7 @@
             <div class="mb-20">
                 <h3 class="text-2xl font-bold text-white mb-10">Centres d'Intérêt</h3>
                 <div class="flex justify-center gap-12 text-5xl opacity-70 hover:opacity-100 transition duration-500">
-                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition"><span>⚽</span><span class="text-sm font-mono text-gray-500">Foot</span></div>
+                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition"><span>⚽</span><span class="text-sm font-mono tracking-widest">FOOT</span></div>
                     <div class="flex flex-col items-center gap-4 hover:text-white transition duration-300 hover:scale-110"><span>🚴</span><span class="text-sm font-mono tracking-widest">CYCLISME</span></div>
                     <div class="flex flex-col items-center gap-4 hover:text-white transition duration-300 hover:scale-110"><span>🏊</span><span class="text-sm font-mono tracking-widest">NATATION</span></div>
                 </div>
@@ -543,40 +547,64 @@
     </section>
 
     <!-- MODALES DETAILS (Contenu enrichi) -->
-    <div id="modal-lora" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-5xl h-[80vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
+    
+    <!-- LoRaWAN (Contenu du PDF) -->
+    <div id="modal-lora" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-lora')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/image_SAE_Lorawan.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Densemble'"></div>
-            <div class="h-1/2 relative overflow-hidden group"><img src="./images/dashboard_client_lorawan.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Detail+Technique'"></div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-lora-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=PCB+et+Composants'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-lora-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Dashboard+TagoIO'"></div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
-            <h2 class="text-4xl font-bold text-white mb-2">Station Météo IoT</h2>
-            <div class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400 text-xs font-mono font-bold mb-8">PROJET 2ÈME ANNÉE</div>
+            <h2 class="text-4xl font-bold text-white mb-2">Station Météo LoRaWAN</h2>
+            <div class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400 text-xs font-mono font-bold mb-8">SAE 4.02 - ESE 2</div>
             
             <div class="space-y-8 text-gray-300 leading-relaxed">
                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-blue-500"></i> Objectif</h4>
-                    <p>Conception complète d'un système embarqué autonome capable de mesurer des paramètres environnementaux et de les transmettre sur longue distance.</p>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-blue-500"></i> Objectif du Projet</h4>
+                    <p>Conception et mise en œuvre d'une solution IoT complète pour la surveillance environnementale (Température & Humidité) utilisant le protocole basse consommation LoRaWAN.</p>
                 </div>
                 
                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-blue-500"></i> Réalisation Technique</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-blue-500"></i> Architecture Matérielle</h4>
                     <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li>Design et routage du PCB sous <strong>KiCad</strong> (double couche).</li>
-                        <li>Développement du firmware en C sur <strong>STM32</strong>.</li>
-                        <li>Implémentation du protocole <strong>LoRaWAN</strong>.</li>
-                        <li>Intégration capteur <strong>SHT31</strong> via I2C.</li>
+                        <li><strong>Capteur :</strong> SHT31 (Précision ±0.3°C) via bus I2C.</li>
+                        <li><strong>Microcontrôleur :</strong> STM32 Nucleo L432KC (ARM Cortex-M4).</li>
+                        <li><strong>Communication :</strong> Module LoRa XM001 Nemeus (Liaison UART, Commandes AT).</li>
+                        <li><strong>Alimentation :</strong> Batterie Li-ion avec BMS TP4056.</li>
+                        <li><strong>PCB :</strong> Conception et routage double couche sous KiCad.</li>
                     </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-blue-500"></i> Logiciel & Cloud</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-2">
+                        <li><strong>Embarqué :</strong> Développement en C (HAL Libraries) : Drivers I2C/UART, Gestion énergie.</li>
+                        <li><strong>Réseau :</strong> Configuration Gateway LoRaWAN et Cloud TTN (The Things Network).</li>
+                        <li><strong>Application :</strong> Dashboard de visualisation temps réel sur Tago.io (Widgets T°, Humidité, Batterie).</li>
+                    </ul>
+                </div>
+
+                 <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i> Compétences Validées</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge skill-blue">Conception</span>
+                        <span class="skill-badge skill-blue">Vérification</span>
+                        <span class="skill-badge skill-blue">KiCad</span>
+                        <span class="skill-badge skill-blue">STM32 (C)</span>
+                        <span class="skill-badge skill-blue">LoRaWAN</span>
+                        <span class="skill-badge skill-blue">IoT Cloud</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div></div>
     
-    <div id="modal-oscillo" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-5xl h-[80vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
+    <div id="modal-oscillo" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-oscillo')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/image-PID-Proteus.png" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Oscillo'"></div>
-            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-oscillo.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Schema+Elec'"></div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-oscillo-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Oscillo'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-oscillo-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Schema+Elec'"></div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
             <h2 class="text-4xl font-bold text-white mb-2">Oscilloscope Numérique</h2>
@@ -585,44 +613,80 @@
             <div class="space-y-8 text-gray-300 leading-relaxed">
                  <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-green-500"></i> Objectif</h4>
-                    <p>Réalisation d'un instrument de mesure complet, de la chaîne d'acquisition analogique à l'affichage numérique.</p>
+                    <p>Réalisation complète d'un oscilloscope numérique : de la sonde à l'affichage sur PC.</p>
                 </div>
                  <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-green-500"></i> Réalisation Technique</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-green-500"></i> Chaîne d'Acquisition</h4>
                     <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li>Conditionnement (Gain variable, Offset) avec AOP.</li>
-                        <li>Protection des entrées et filtrage anti-repliement.</li>
-                        <li>Conversion ADC sur microcontrôleur.</li>
-                        <li>Interface graphique PC pour visualisation.</li>
+                        <li><strong>Analogique :</strong> Adaptation de signal (Pont diviseur), Décalage d'offset, Amplification (TL084), Multiplexeur.</li>
+                        <li><strong>Protection :</strong> Diodes Zener pour protéger le microcontrôleur.</li>
+                        <li><strong>Filtrage :</strong> Filtre anti-repliement (Nyquist) actif.</li>
+                        <li><strong>Alimentation :</strong> Régulation de tension symétrique (+15V / -15V).</li>
                     </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code-2" class="w-4 h-4 text-green-500"></i> Traitement Numérique</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-2">
+                        <li>Conversion Analogique-Numérique (ADC) sur STM32.</li>
+                        <li>Transmission des échantillons via UART (Série) vers le PC.</li>
+                        <li>Interface graphique Python pour tracer la courbe en temps réel.</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Compétences Validées</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge skill-blue">Analogique</span>
+                        <span class="skill-badge skill-blue">PCB</span>
+                        <span class="skill-badge skill-blue">TLV272</span>
+                        <span class="skill-badge skill-blue">Python</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div></div>
 
-    <div id="modal-robot" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-5xl h-[80vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
+    <div id="modal-robot" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-robot')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/image-robot.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Photo+Robot'"></div>
-            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-robot.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Code+Arduino'"></div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-robot-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Simulation+Tinkercad'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-robot-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Code+ou+Photo'"></div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
-            <h2 class="text-4xl font-bold text-white mb-2">Robot Mobile</h2>
-            <div class="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/30 rounded text-orange-400 text-xs font-mono font-bold mb-8">PROJET 1ÈRE ANNÉE</div>
+            <h2 class="text-4xl font-bold text-white mb-2">Robot Mobile Autonome</h2>
+            <div class="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/30 rounded text-orange-400 text-xs font-mono font-bold mb-8">SAÉ 2.01 - ESE 1</div>
             
             <div class="space-y-8 text-gray-300 leading-relaxed">
                  <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="bot" class="w-4 h-4 text-orange-500"></i> Objectif</h4>
-                    <p>Construction et programmation d'un robot autonome capable d'éviter les obstacles dans un environnement inconnu.</p>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-orange-500"></i> Objectif</h4>
+                    <p>Conception et réalisation d'un robot mobile capable de naviguer en autonomie, d'éviter les obstacles et de les contourner intelligemment.</p>
                 </div>
                  <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-orange-500"></i> Réalisation Technique</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-orange-500"></i> Matériel & Simulation</h4>
                     <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li>Programmation C++ sur Arduino.</li>
-                        <li>Gestion des capteurs ultrasons (HC-SR04).</li>
-                        <li>Pilotage des moteurs CC (Pont en H).</li>
-                        <li>Algorithme de navigation autonome.</li>
+                        <li><strong>Microcontrôleur :</strong> Arduino UNO.</li>
+                        <li><strong>Actionneurs :</strong> 2 Moteurs CC pilotés par un driver L293D.</li>
+                        <li><strong>Capteurs :</strong> 3 Capteurs Ultrasons (Gauche, Centre, Droite).</li>
+                        <li><strong>Alimentation :</strong> Batterie 9V avec gestion BMS (Simulation Kicad).</li>
+                        <li><strong>Outils :</strong> Simulation complète du câblage sous Tinkercad.</li>
                     </ul>
+                </div>
+                 <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-orange-500"></i> Logique & Algorithme</h4>
+                    <ul class="list-disc list-inside space-y-2 ml-2">
+                        <li>Détection d'obstacles via mesures ultrasons.</li>
+                        <li>Stratégies d'évitement : Demi-tour, virage large/serré.</li>
+                        <li>Algorithme de contournement par la gauche (Suivi de mur).</li>
+                        <li>Programmation en C++ (Gestion PWM moteurs).</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-500"></i> Compétences Validées</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge skill-yellow">Conception</span>
+                        <span class="skill-badge skill-yellow">Vérification</span>
+                        <span class="skill-badge skill-yellow">Arduino (C++)</span>
+                        <span class="skill-badge skill-yellow">Robotique</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -635,6 +699,13 @@
         function openModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('hidden'); m.style.display='flex'; setTimeout(() => m.classList.add('active'), 10); document.body.style.overflow = 'hidden'; }}
         function closeModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('active'); setTimeout(() => { m.style.display='none'; m.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }}
         document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); }); });
+        
+        function toggleSection(id, iconId) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById(iconId);
+            content.classList.toggle('open');
+            icon.classList.toggle('rotate-180');
+        }
     </script>
 </body>
 </html>
