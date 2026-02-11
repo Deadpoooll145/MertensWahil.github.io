@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahil Mertens | Portfolio Premium</title>
+    <title>Wahil Mertens | Portfolio GEII</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <!-- Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -23,20 +23,16 @@
                         mono: ['"JetBrains Mono"', 'monospace'],
                     },
                     colors: {
-                        gold: '#fbbf24', 
-                        dark: '#020202',
-                        zinc900: '#09090b',
-                        zinc800: '#18181b',
+                        primary: '#10b981',   /* Vert Emeraude */
+                        accent: '#f97316',    /* Orange */
+                        dark: '#050505',      /* Noir Profond */
                         glass: 'rgba(255, 255, 255, 0.03)',
                         glassBorder: 'rgba(255, 255, 255, 0.08)',
                     },
                     boxShadow: {
-                        'glow': '0 0 40px rgba(59, 130, 246, 0.15)',
-                        'glow-gold': '0 0 40px rgba(251, 191, 36, 0.15)',
+                        'glow-green': '0 0 40px rgba(16, 185, 129, 0.2)',
+                        'glow-orange': '0 0 40px rgba(249, 115, 22, 0.2)',
                         'premium': '0 0 25px rgba(255, 255, 255, 0.05), inset 0 0 0 1px rgba(255,255,255,0.1)'
-                    },
-                    backgroundImage: {
-                        'grid-pattern': "linear-gradient(to right, #111 1px, transparent 1px), linear-gradient(to bottom, #111 1px, transparent 1px)"
                     }
                 }
             }
@@ -44,37 +40,43 @@
     </script>
 
     <style>
+        /* SCROLLBAR PREMIUM (Vert -> Orange) */
         ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: #020202; }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 5px; border: 2px solid #020202; }
-        ::-webkit-scrollbar-thumb:hover { background: #666; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #10b981, #f97316);
+            border-radius: 5px;
+            border: 2px solid #050505;
+        }
+        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #059669, #ea580c); }
 
-        body { background-color: #020202; color: #e5e5e5; overflow-x: hidden; }
+        body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
         
         .section-separator {
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.3), transparent);
             margin: 0 auto;
-            width: 80%;
+            width: 70%;
             opacity: 0.5;
         }
 
         .glass-panel {
             background: var(--glass);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--glassBorder);
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         .glass-panel:hover {
-            border-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(16, 185, 129, 0.3); /* Bordure verte au survol */
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
+            background: rgba(255, 255, 255, 0.05);
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #94a3b8 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #a7f3d0 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -84,16 +86,16 @@
         .timeline-line {
             position: absolute; left: 50%; transform: translateX(-50%);
             top: 0; bottom: 0; width: 4px; 
-            background: linear-gradient(to bottom, transparent, #333 10%, #444 50%, #333 90%, transparent);
+            background: linear-gradient(to bottom, transparent, #1e293b 10%, #10b981 50%, #1e293b 90%, transparent);
             z-index: 0; border-radius: 2px;
         }
         .timeline-row { display: flex; justify-content: center; position: relative; margin-bottom: 80px; }
         .timeline-content { width: 45%; position: relative; z-index: 10; }
         .timeline-dot {
             position: absolute; left: 50%; top: 0; transform: translateX(-50%);
-            width: 24px; height: 24px; background: #020202;
-            border: 4px solid #fbbf24; border-radius: 50%; z-index: 20;
-            box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+            width: 24px; height: 24px; background: #050505;
+            border: 4px solid #10b981; border-radius: 50%; z-index: 20;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
         }
         .timeline-row.left .timeline-content { margin-right: auto; text-align: right; padding-right: 60px; }
         .timeline-row.right .timeline-content { margin-left: auto; text-align: left; padding-left: 60px; }
@@ -108,64 +110,35 @@
             .timeline-row.left .flex.items-center.justify-end { justify-content: flex-start !important; flex-direction: row !important; }
         }
 
-        /* --- STYLES BADGES AVEC CURSEUR PERSONNALISÉ --- */
+        /* Badges Compétences Lumineux Individuels */
         .skill-badge {
             display: inline-block; padding: 8px 16px; border-radius: 10px;
             font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; font-weight: 500;
             border: 1px solid transparent; transition: all 0.3s;
-            background: rgba(255,255,255,0.03); 
+            background: rgba(255,255,255,0.03); cursor: default;
         }
-
-        /* Bleu (Elec) */
-        .skill-blue { color: #60a5fa; border-color: rgba(96,165,250,0.2); }
-        .skill-blue:hover { 
-            background: rgba(96,165,250,0.15); 
-            box-shadow: 0 0 20px rgba(96,165,250,0.4); 
-            border-color: #60a5fa; 
-            transform: translateY(-2px);
-            /* Curseur Bleu */
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%2360a5fa' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
-        }
+        /* Vert (Elec) */
+        .skill-green { color: #34d399; border-color: rgba(52,211,153,0.3); }
+        .skill-green:hover { background: rgba(52,211,153,0.15); box-shadow: 0 0 20px rgba(52,211,153,0.4); border-color: #10b981; transform: translateY(-2px); }
 
         /* Violet (Soft) */
-        .skill-purple { color: #c084fc; border-color: rgba(192,132,252,0.2); }
-        .skill-purple:hover { 
-            background: rgba(192,132,252,0.15); 
-            box-shadow: 0 0 20px rgba(192,132,252,0.4); 
-            border-color: #c084fc; 
-            transform: translateY(-2px);
-            /* Curseur Violet */
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%23c084fc' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
-        }
+        .skill-purple { color: #c084fc; border-color: rgba(192,132,252,0.3); }
+        .skill-purple:hover { background: rgba(192,132,252,0.15); box-shadow: 0 0 20px rgba(192,132,252,0.4); border-color: #c084fc; transform: translateY(-2px); }
 
-        /* Jaune (Energie) */
-        .skill-yellow { color: #facc15; border-color: rgba(250,204,21,0.2); }
-        .skill-yellow:hover { 
-            background: rgba(250,204,21,0.15); 
-            box-shadow: 0 0 20px rgba(250,204,21,0.4); 
-            border-color: #facc15; 
-            transform: translateY(-2px);
-            /* Curseur Jaune */
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%23facc15' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
-        }
+        /* Orange (Energie) */
+        .skill-orange { color: #fb923c; border-color: rgba(251,146,60,0.3); }
+        .skill-orange:hover { background: rgba(251,146,60,0.15); box-shadow: 0 0 20px rgba(251,146,60,0.4); border-color: #f97316; transform: translateY(-2px); }
 
         /* Rouge (Meca) */
-        .skill-red { color: #f87171; border-color: rgba(248,113,113,0.2); }
-        .skill-red:hover { 
-            background: rgba(248,113,113,0.15); 
-            box-shadow: 0 0 20px rgba(248,113,113,0.4); 
-            border-color: #f87171; 
-            transform: translateY(-2px);
-            /* Curseur Rouge */
-            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%23f87171' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
-        }
+        .skill-red { color: #f87171; border-color: rgba(248,113,113,0.3); }
+        .skill-red:hover { background: rgba(248,113,113,0.15); box-shadow: 0 0 20px rgba(248,113,113,0.4); border-color: #f87171; transform: translateY(-2px); }
 
         /* Drapeaux Surbrillance */
         .flag-card { transition: all 0.3s ease; border: 1px solid transparent; }
         .flag-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.05); }
-        .flag-fr:hover { border-color: #3b82f6; box-shadow: 0 0 30px rgba(59, 130, 246, 0.2); }
+        .flag-fr:hover { border-color: #10b981; box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
         .flag-gb:hover { border-color: #ef4444; box-shadow: 0 0 30px rgba(239, 68, 68, 0.2); }
-        .flag-es:hover { border-color: #eab308; box-shadow: 0 0 30px rgba(234, 179, 8, 0.2); }
+        .flag-es:hover { border-color: #f97316; box-shadow: 0 0 30px rgba(249, 115, 22, 0.2); }
 
         /* Accordion Scolarité */
         .accordion-content {
@@ -181,20 +154,22 @@
         .modal.active { opacity: 1; visibility: visible; }
         .modal-content { transform: scale(0.95); transition: all 0.3s; max-height: 90vh; overflow-y: auto; }
         .modal.active .modal-content { transform: scale(1); }
+        
+        .lightbox-img { max-height: 90vh; max-width: 90vw; object-fit: contain; border-radius: 12px; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
     </style>
 </head>
-<body class="bg-dark text-gray-300 font-sans antialiased selection:bg-orange-500/30 selection:text-white relative">
+<body class="bg-dark text-gray-300 font-sans antialiased selection:bg-primary/30 selection:text-white relative">
 
-    <!-- AMBIANCE CHAUDE -->
-    <div class="fixed top-0 right-0 w-[800px] h-[800px] bg-orange-600/10 rounded-full blur-[180px] -z-10 pointer-events-none"></div>
-    <div class="fixed bottom-0 left-0 w-[600px] h-[600px] bg-blue-900/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
-    <div class="fixed inset-0 bg-grid-pattern opacity-[0.02] pointer-events-none -z-20"></div>
+    <!-- AMBIANCE GREEN/ORANGE FADE -->
+    <div class="fixed top-0 right-0 w-[800px] h-[800px] bg-emerald-600/10 rounded-full blur-[180px] -z-10 pointer-events-none"></div>
+    <div class="fixed bottom-0 left-0 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
+    <div class="fixed inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none -z-20"></div>
 
     <!-- NAVIGATION -->
     <nav class="fixed w-full z-50 glass-panel border-x-0 border-t-0 h-24 flex items-center bg-dark/80">
         <div class="max-w-7xl mx-auto px-8 w-full flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-blue-600 to-blue-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-blue-900/50">
+                <div class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-900/50">
                     <span class="font-bold text-xl">W</span>
                 </div>
                 <div>
@@ -221,14 +196,14 @@
             </h1>
             <h2 class="text-2xl md:text-3xl font-light text-gray-400">
                 &Eacute;tudiant <span class="text-white font-medium">BUT GEII</span><br>
-                <span class="text-blue-400 text-xl mt-2 block font-normal">Parcours &Eacute;lectronique & Syst&egrave;mes Embarqu&eacute;s</span>
+                <span class="text-primary text-xl mt-2 block font-normal">Parcours &Eacute;lectronique & Syst&egrave;mes Embarqu&eacute;s</span>
             </h2>
             
             <div class="flex flex-wrap justify-center gap-6 mt-12">
-                <a href="mailto:mertenswahil@gmail.com" class="px-10 py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-blue-900/40 flex items-center gap-3 hover:scale-105">
+                <a href="mailto:mertenswahil@gmail.com" class="px-10 py-5 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-emerald-900/40 flex items-center gap-3 hover:scale-105">
                     <i data-lucide="mail" class="w-6 h-6"></i> Me Contacter
                 </a>
-                <a href="CV_Wahil_MERTENS.pdf" target="_blank" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105">
+                <a href="CV_Wahil_MERTENS.pdf" target="_blank" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105 border-white/20">
                     <i data-lucide="download" class="w-6 h-6"></i> Mon CV
                 </a>
             </div>
@@ -249,8 +224,8 @@
                             <img src="./images/logo-iut.jpg" class="w-full h-full object-contain" alt="IUT" onerror="this.style.display='none'">
                         </div>
                         <div class="flex-grow text-center md:text-left">
-                            <h3 class="text-3xl font-bold text-white group-hover:text-blue-400 transition">BUT GEII</h3>
-                            <p class="text-xl text-gray-400 mt-2">IUT Cr&eacute;teil-Vitry (UPEC) | <span class="text-gold font-mono">2023 - 2026</span></p>
+                            <h3 class="text-3xl font-bold text-white group-hover:text-primary transition">BUT GEII</h3>
+                            <p class="text-xl text-gray-400 mt-2">IUT Cr&eacute;teil-Vitry (UPEC) | <span class="text-primary font-mono">2023 - 2026</span></p>
                         </div>
                          <i data-lucide="chevron-down" id="icon-but" class="w-8 h-8 text-gray-400 transition-transform chevron"></i>
                     </div>
@@ -267,8 +242,8 @@
                             <img src="./images/logo-upec.jpg" class="w-full h-full object-contain" alt="UPEC" onerror="this.style.display='none'">
                         </div>
                         <div class="flex-grow text-center md:text-left">
-                            <h3 class="text-3xl font-bold text-white group-hover:text-blue-400 transition">Licence Physique</h3>
-                            <p class="text-xl text-gray-400 mt-2">UPEC (Paris-Est Cr&eacute;teil) | <span class="text-gold font-mono">2022 - 2023</span></p>
+                            <h3 class="text-3xl font-bold text-white group-hover:text-primary transition">Licence Physique</h3>
+                            <p class="text-xl text-gray-400 mt-2">UPEC (Paris-Est Cr&eacute;teil) | <span class="text-primary font-mono">2022 - 2023</span></p>
                         </div>
                          <i data-lucide="chevron-down" id="icon-licence" class="w-8 h-8 text-gray-400 transition-transform chevron"></i>
                     </div>
@@ -293,12 +268,12 @@
                 <div class="timeline-row right" data-aos="fade-left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="glass-panel p-8 rounded-2xl hover:border-cyan-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
-                            <div class="flex items-center gap-6 mb-6 border-b border-white/5 pb-4">
+                        <div class="glass-panel p-8 rounded-2xl hover:border-emerald-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center gap-6 mb-6 border-b border-white/10 pb-4">
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-upec.jpg" class="w-full h-full object-contain" alt="IPN" onerror="this.style.display='none'"></div>
                                 <div>
                                     <h3 class="font-bold text-white text-xl">Stagiaire R&D</h3>
-                                    <p class="text-cyan-400 font-mono text-sm mt-1">IPN Mexique | 2025</p>
+                                    <p class="text-emerald-400 font-mono text-sm mt-1">IPN Mexique | 2025</p>
                                 </div>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-2 text-base">
@@ -315,7 +290,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="glass-panel p-8 rounded-2xl hover:border-orange-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
-                            <div class="flex items-center justify-end gap-6 mb-6 border-b border-white/5 pb-4 logo-container">
+                            <div class="flex items-center justify-end gap-6 mb-6 border-b border-white/10 pb-4 logo-container">
                                 <div class="text-right">
                                     <h3 class="font-bold text-white text-xl">M&eacute;canicien</h3>
                                     <p class="text-orange-500 font-mono text-sm mt-1">Groupe Riester | 2024</p>
@@ -335,12 +310,12 @@
                 <div class="timeline-row right" data-aos="fade-left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="glass-panel p-8 rounded-2xl hover:border-green-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
-                            <div class="flex items-center gap-6 mb-6 border-b border-white/5 pb-4">
+                        <div class="glass-panel p-8 rounded-2xl hover:border-emerald-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
+                            <div class="flex items-center gap-6 mb-6 border-b border-white/10 pb-4">
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-lm.jpg" class="w-full h-full object-contain" alt="LM" onerror="this.style.display='none'"></div>
                                 <div>
                                     <h3 class="font-bold text-white text-xl">Logistique</h3>
-                                    <p class="text-green-500 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
+                                    <p class="text-emerald-500 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
                                 </div>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-2 text-base">
@@ -357,7 +332,7 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="glass-panel p-8 rounded-2xl hover:border-blue-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
-                            <div class="flex items-center justify-end gap-6 mb-6 border-b border-white/5 pb-4 logo-container">
+                            <div class="flex items-center justify-end gap-6 mb-6 border-b border-white/10 pb-4 logo-container">
                                 <div class="text-right">
                                     <h3 class="font-bold text-white text-xl">Magasinier</h3>
                                     <p class="text-blue-500 font-mono text-sm mt-1">D&eacute;cathlon | 2023</p>
@@ -367,6 +342,7 @@
                             <ul class="text-gray-300 list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
                                 <li dir="ltr">R&eacute;ception marchandises.</li>
                                 <li dir="ltr">Gestion de stock.</li>
+                                <li dir="ltr">Inventaires tournants.</li>
                             </ul>
                         </div>
                     </div>
@@ -395,9 +371,9 @@
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-primary transition">Station IoT LoRaWAN</h3>
                             <p class="text-gray-400 mb-6 leading-relaxed text-lg">Système complet de surveillance environnementale. Capteurs I2C, Microcontrôleur STM32 et transmission radio.</p>
                             <div class="flex gap-3">
-                                <span class="skill-badge skill-blue">KiCad</span>
-                                <span class="skill-badge skill-blue">SHT31</span>
-                                <span class="skill-badge skill-blue">LoRa</span>
+                                <span class="skill-badge skill-green">KiCad</span>
+                                <span class="skill-badge skill-green">SHT31</span>
+                                <span class="skill-badge skill-green">LoRa</span>
                             </div>
                         </div>
                     </div>
@@ -417,24 +393,24 @@
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-accent transition">Oscilloscope Numérique</h3>
                             <p class="text-gray-400 mb-6 leading-relaxed text-lg">Conception d'un outil de mesure. Chaîne d'acquisition analogique (AOP), filtrage et numérisation.</p>
                             <div class="flex gap-3">
-                                <span class="skill-badge skill-blue">Analogique</span>
-                                <span class="skill-badge skill-blue">PCB</span>
-                                <span class="skill-badge skill-blue">TLV272</span>
-                                <span class="skill-badge skill-blue">Python</span>
+                                <span class="skill-badge skill-orange">Analogique</span>
+                                <span class="skill-badge skill-orange">PCB</span>
+                                <span class="skill-badge skill-orange">TLV272</span>
+                                <span class="skill-badge skill-orange">Python</span>
                             </div>
                         </div>
                     </div>
                     <!-- Robot -->
-                    <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow-gold transition duration-500" onclick="openModal('modal-robot')" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow transition duration-500" onclick="openModal('modal-robot')" data-aos="fade-up" data-aos-delay="100">
                         <div class="h-64 bg-zinc-900 relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-900/20 to-black">
                             <img src="./images/image-robot.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700" alt="Robot" onerror="this.src='https://via.placeholder.com/800x500?text=Robot'">
                         </div>
                         <div class="p-8">
-                            <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-gold transition">Robot Mobile</h3>
+                            <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-accent transition">Robot Mobile</h3>
                             <p class="text-gray-400 mb-6 leading-relaxed text-lg">Robot éviteur d'obstacles autonome. Programmation Arduino C++ et intégration capteurs.</p>
                              <div class="flex gap-3">
-                                <span class="skill-badge skill-yellow">Arduino</span>
-                                <span class="skill-badge skill-yellow">C++</span>
+                                <span class="skill-badge skill-orange">Arduino</span>
+                                <span class="skill-badge skill-orange">C++</span>
                             </div>
                         </div>
                     </div>
@@ -485,17 +461,17 @@
             <h2 class="text-4xl md:text-6xl font-bold text-white mb-20 text-center tracking-tight" data-aos="fade-up">Compétences Techniques</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 <!-- Carte Elec -->
-                <div class="glass-panel p-10 rounded-[2rem] group hover:border-blue-500/50 transition duration-500" data-aos="fade-up">
-                    <div class="flex items-center gap-6 mb-8 text-blue-400">
+                <div class="glass-panel p-10 rounded-[2rem] group hover:border-green-500/50 transition duration-500" data-aos="fade-up">
+                    <div class="flex items-center gap-6 mb-8 text-green-400">
                         <i data-lucide="cpu" class="w-12 h-12"></i>
                         <h3 class="text-3xl font-bold text-white">Électronique</h3>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge skill-blue">KiCad</span>
-                        <span class="skill-badge skill-blue">STM32</span>
-                        <span class="skill-badge skill-blue">Filtres</span>
-                        <span class="skill-badge skill-blue">Amplificateurs</span>
-                        <span class="skill-badge skill-blue">CAN / CNA</span>
+                        <span class="skill-badge skill-green">KiCad</span>
+                        <span class="skill-badge skill-green">STM32</span>
+                        <span class="skill-badge skill-green">Filtres</span>
+                        <span class="skill-badge skill-green">Amplificateurs</span>
+                        <span class="skill-badge skill-green">CAN / CNA</span>
                     </div>
                 </div>
 
@@ -515,16 +491,16 @@
                 </div>
 
                 <!-- Carte Energie -->
-                <div class="glass-panel p-10 rounded-[2rem] group hover:border-yellow-500/50 transition duration-500" data-aos="fade-up">
-                    <div class="flex items-center gap-6 mb-8 text-yellow-400">
+                <div class="glass-panel p-10 rounded-[2rem] group hover:border-orange-500/50 transition duration-500" data-aos="fade-up">
+                    <div class="flex items-center gap-6 mb-8 text-orange-400">
                         <i data-lucide="zap" class="w-12 h-12"></i>
                         <h3 class="text-3xl font-bold text-white">Énergie</h3>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge skill-yellow">Triphasé</span>
-                        <span class="skill-badge skill-yellow">Régulation PID</span>
-                        <span class="skill-badge skill-yellow">Habilitation</span>
-                        <span class="skill-badge skill-yellow">LoRaWAN</span>
+                        <span class="skill-badge skill-orange">Triphasé</span>
+                        <span class="skill-badge skill-orange">Régulation PID</span>
+                        <span class="skill-badge skill-orange">Habilitation</span>
+                        <span class="skill-badge skill-orange">LoRaWAN</span>
                     </div>
                 </div>
 
@@ -553,9 +529,9 @@
             <div class="mb-20">
                 <h3 class="text-2xl font-bold text-white mb-10">Centres d'Intérêt</h3>
                 <div class="flex justify-center gap-12 text-5xl opacity-70 hover:opacity-100 transition duration-500">
-                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition"><span>⚽</span><span class="text-sm font-mono tracking-widest">FOOT</span></div>
-                    <div class="flex flex-col items-center gap-4 hover:text-white transition duration-300 hover:scale-110"><span>🚴</span><span class="text-sm font-mono tracking-widest">CYCLISME</span></div>
-                    <div class="flex flex-col items-center gap-4 hover:text-white transition duration-300 hover:scale-110"><span>🏊</span><span class="text-sm font-mono tracking-widest">NATATION</span></div>
+                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition"><span>⚽</span><span class="text-sm font-mono tracking-widest text-gray-500">FOOT</span></div>
+                    <div class="flex flex-col items-center gap-4 hover:text-white transition duration-300 hover:scale-110"><span>🚴</span><span class="text-sm font-mono tracking-widest text-gray-500">CYCLISME</span></div>
+                    <div class="flex flex-col items-center gap-4 hover:text-white transition duration-300 hover:scale-110"><span>🏊</span><span class="text-sm font-mono tracking-widest text-gray-500">NATATION</span></div>
                 </div>
             </div>
 
@@ -579,14 +555,24 @@
         </div>
     </section>
 
-    <!-- MODALES DETAILS (Contenu enrichi) -->
+    <!-- MODALES DETAILS / LIGHTBOX (IMAGE CLICK) -->
     
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="modal z-[2000]" onclick="closeLightbox()">
+        <img id="lightbox-img" class="lightbox-img transition-all duration-300 transform scale-95" src="" onclick="event.stopPropagation()">
+        <button class="absolute top-6 right-6 text-white p-3 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-8 h-8"></i></button>
+    </div>
+
     <!-- LoRaWAN (Contenu du PDF) -->
     <div id="modal-lora" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-lora')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-lora-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=PCB+et+Composants'"></div>
-            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-lora-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Dashboard+TagoIO'"></div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group">
+                <img src="./images/detail-lora-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=PCB+et+Composants'">
+            </div>
+            <div class="h-1/2 relative overflow-hidden group">
+                <img src="./images/detail-lora-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Dashboard+TagoIO'">
+            </div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
             <h2 class="text-4xl font-bold text-white mb-2">Station Météo LoRaWAN</h2>
@@ -621,12 +607,12 @@
                  <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i> Compétences Validées</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge skill-blue">Conception</span>
-                        <span class="skill-badge skill-blue">Vérification</span>
-                        <span class="skill-badge skill-blue">KiCad</span>
-                        <span class="skill-badge skill-blue">STM32 (C)</span>
-                        <span class="skill-badge skill-blue">LoRaWAN</span>
-                        <span class="skill-badge skill-blue">IoT Cloud</span>
+                        <span class="skill-badge skill-green">Conception</span>
+                        <span class="skill-badge skill-green">Vérification</span>
+                        <span class="skill-badge skill-green">KiCad</span>
+                        <span class="skill-badge skill-green">STM32 (C)</span>
+                        <span class="skill-badge skill-green">LoRaWAN</span>
+                        <span class="skill-badge skill-green">IoT Cloud</span>
                     </div>
                 </div>
             </div>
@@ -636,8 +622,8 @@
     <div id="modal-oscillo" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-oscillo')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-oscillo-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Oscillo'"></div>
-            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-oscillo-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Schema+Elec'"></div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-oscillo-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Oscillo'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-oscillo-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Schema+Elec'"></div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
             <h2 class="text-4xl font-bold text-white mb-2">Oscilloscope Numérique</h2>
@@ -668,10 +654,10 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Compétences Validées</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge skill-blue">Analogique</span>
-                        <span class="skill-badge skill-blue">PCB</span>
-                        <span class="skill-badge skill-blue">TLV272</span>
-                        <span class="skill-badge skill-blue">Python</span>
+                        <span class="skill-badge skill-orange">Analogique</span>
+                        <span class="skill-badge skill-orange">PCB</span>
+                        <span class="skill-badge skill-orange">TLV272</span>
+                        <span class="skill-badge skill-orange">Python</span>
                     </div>
                 </div>
             </div>
@@ -681,8 +667,8 @@
     <div id="modal-robot" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-robot')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-robot-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Simulation+Tinkercad'"></div>
-            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-robot-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105" onerror="this.src='https://via.placeholder.com/800x400?text=Code+ou+Photo'"></div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-robot-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Simulation+Tinkercad'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-robot-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Code+ou+Photo'"></div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
             <h2 class="text-4xl font-bold text-white mb-2">Robot Mobile Autonome</h2>
@@ -715,10 +701,10 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-500"></i> Compétences Validées</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-tag skill-tag-yellow">Conception</span>
-                        <span class="skill-tag skill-tag-yellow">Vérification</span>
-                        <span class="skill-tag skill-tag-yellow">Arduino (C++)</span>
-                        <span class="skill-tag skill-tag-yellow">Robotique</span>
+                        <span class="skill-badge skill-orange">Conception</span>
+                        <span class="skill-badge skill-orange">Vérification</span>
+                        <span class="skill-badge skill-orange">Arduino (C++)</span>
+                        <span class="skill-badge skill-orange">Robotique</span>
                     </div>
                 </div>
             </div>
@@ -731,13 +717,31 @@
         AOS.init();
         function openModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('hidden'); m.style.display='flex'; setTimeout(() => m.classList.add('active'), 10); document.body.style.overflow = 'hidden'; }}
         function closeModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('active'); setTimeout(() => { m.style.display='none'; m.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }}
-        document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if(e.target === m) closeModal(m.id); }); });
+        document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if(e.target === m && m.id !== 'lightbox') closeModal(m.id); }); });
         
         function toggleSection(id, iconId) {
             const content = document.getElementById(id);
             const icon = document.getElementById(iconId);
             content.classList.toggle('open');
             icon.classList.toggle('rotate-180');
+        }
+
+        // Lightbox Functions
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            lb.classList.remove('hidden');
+            lb.classList.add('active');
+            setTimeout(() => img.classList.remove('scale-95'), 50);
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.classList.add('scale-95');
+            lb.classList.remove('active');
+            setTimeout(() => lb.classList.add('hidden'), 300);
         }
     </script>
 </body>
