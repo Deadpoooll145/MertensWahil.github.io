@@ -53,11 +53,12 @@
         body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
         
         .section-separator {
-            height: 1px;
-            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.3), transparent);
+            height: 2px; /* Ligne légèrement plus épaisse */
+            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.5), transparent); /* Couleur plus soutenue */
             margin: 0 auto;
-            width: 70%;
-            opacity: 0.5;
+            width: 80%; /* Séparateur un peu plus large */
+            opacity: 0.8; /* Plus visible */
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); /* Légère lueur */
         }
 
         .glass-panel {
@@ -215,10 +216,6 @@
                 <a href="#contact" class="px-10 py-5 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-emerald-900/40 flex items-center gap-3 hover:scale-105">
                     <i data-lucide="message-square" class="w-6 h-6"></i> Me Contacter
                 </a>
-                <!-- Ouvre la fenêtre Mail -->
-                <button onclick="openModal('modal-mail-choice')" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105 border-white/20">
-                    <i data-lucide="mail" class="w-6 h-6"></i> Mail
-                </button>
                 <a href="CV_Wahil_MERTENS.pdf" target="_blank" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105 border-white/20">
                     <i data-lucide="download" class="w-6 h-6"></i> Mon CV
                 </a>
