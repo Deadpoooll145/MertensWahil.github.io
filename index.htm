@@ -108,24 +108,57 @@
             .timeline-row.left .flex.items-center.justify-end { justify-content: flex-start !important; flex-direction: row !important; }
         }
 
-        /* Badges Compétences Lumineux Individuels */
+        /* --- STYLES BADGES AVEC CURSEUR PERSONNALISÉ --- */
         .skill-badge {
             display: inline-block; padding: 8px 16px; border-radius: 10px;
             font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; font-weight: 500;
             border: 1px solid transparent; transition: all 0.3s;
-            background: rgba(255,255,255,0.03); cursor: default;
+            background: rgba(255,255,255,0.03); 
         }
+
+        /* Bleu (Elec) */
         .skill-blue { color: #60a5fa; border-color: rgba(96,165,250,0.2); }
-        .skill-blue:hover { background: rgba(96,165,250,0.15); box-shadow: 0 0 20px rgba(96,165,250,0.4); border-color: #60a5fa; transform: translateY(-2px); }
+        .skill-blue:hover { 
+            background: rgba(96,165,250,0.15); 
+            box-shadow: 0 0 20px rgba(96,165,250,0.4); 
+            border-color: #60a5fa; 
+            transform: translateY(-2px);
+            /* Curseur Bleu */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%2360a5fa' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
+        }
 
+        /* Violet (Soft) */
         .skill-purple { color: #c084fc; border-color: rgba(192,132,252,0.2); }
-        .skill-purple:hover { background: rgba(192,132,252,0.15); box-shadow: 0 0 20px rgba(192,132,252,0.4); border-color: #c084fc; transform: translateY(-2px); }
+        .skill-purple:hover { 
+            background: rgba(192,132,252,0.15); 
+            box-shadow: 0 0 20px rgba(192,132,252,0.4); 
+            border-color: #c084fc; 
+            transform: translateY(-2px);
+            /* Curseur Violet */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%23c084fc' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
+        }
 
+        /* Jaune (Energie) */
         .skill-yellow { color: #facc15; border-color: rgba(250,204,21,0.2); }
-        .skill-yellow:hover { background: rgba(250,204,21,0.15); box-shadow: 0 0 20px rgba(250,204,21,0.4); border-color: #facc15; transform: translateY(-2px); }
+        .skill-yellow:hover { 
+            background: rgba(250,204,21,0.15); 
+            box-shadow: 0 0 20px rgba(250,204,21,0.4); 
+            border-color: #facc15; 
+            transform: translateY(-2px);
+            /* Curseur Jaune */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%23facc15' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
+        }
 
+        /* Rouge (Meca) */
         .skill-red { color: #f87171; border-color: rgba(248,113,113,0.2); }
-        .skill-red:hover { background: rgba(248,113,113,0.15); box-shadow: 0 0 20px rgba(248,113,113,0.4); border-color: #f87171; transform: translateY(-2px); }
+        .skill-red:hover { 
+            background: rgba(248,113,113,0.15); 
+            box-shadow: 0 0 20px rgba(248,113,113,0.4); 
+            border-color: #f87171; 
+            transform: translateY(-2px);
+            /* Curseur Rouge */
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'><path d='M2 2l9 19 3-8 8-3z' fill='%23f87171' stroke='white' stroke-width='1.5'/></svg>") 0 0, auto;
+        }
 
         /* Drapeaux Surbrillance */
         .flag-card { transition: all 0.3s ease; border: 1px solid transparent; }
@@ -613,12 +646,12 @@
             <div class="space-y-8 text-gray-300 leading-relaxed">
                  <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-green-500"></i> Objectif</h4>
-                    <p>Réalisation complète d'un oscilloscope numérique : de la sonde à l'affichage sur PC.</p>
+                    <p>Réalisation complète d'un instrument de mesure, de la chaîne d'acquisition analogique à l'affichage numérique.</p>
                 </div>
                  <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-green-500"></i> Chaîne d'Acquisition</h4>
                     <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li><strong>Analogique :</strong> Adaptation de signal (Pont diviseur), Décalage d'offset, Amplification (TL084), Multiplexeur.</li>
+                        <li><strong>Analogique :</strong> Adaptation de signal (Pont diviseur), Décalage d'offset, Amplification (TLV272), Multiplexeur.</li>
                         <li><strong>Protection :</strong> Diodes Zener pour protéger le microcontrôleur.</li>
                         <li><strong>Filtrage :</strong> Filtre anti-repliement (Nyquist) actif.</li>
                         <li><strong>Alimentation :</strong> Régulation de tension symétrique (+15V / -15V).</li>
@@ -682,10 +715,10 @@
                 <div>
                     <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-500"></i> Compétences Validées</h4>
                     <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge skill-yellow">Conception</span>
-                        <span class="skill-badge skill-yellow">Vérification</span>
-                        <span class="skill-badge skill-yellow">Arduino (C++)</span>
-                        <span class="skill-badge skill-yellow">Robotique</span>
+                        <span class="skill-tag skill-tag-yellow">Conception</span>
+                        <span class="skill-tag skill-tag-yellow">Vérification</span>
+                        <span class="skill-tag skill-tag-yellow">Arduino (C++)</span>
+                        <span class="skill-tag skill-tag-yellow">Robotique</span>
                     </div>
                 </div>
             </div>
