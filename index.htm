@@ -156,9 +156,20 @@
         .modal.active .modal-content { transform: scale(1); }
         
         .lightbox-img { max-height: 90vh; max-width: 90vw; object-fit: contain; border-radius: 12px; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
+
+        /* Toast de copie */
+        #toast-copy {
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
+            background: #10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 1rem;
+            font-weight: 600; opacity: 0; transition: all 0.3s ease; z-index: 3000;
+        }
+        #toast-copy.show { opacity: 1; transform: translate(-50%, -1rem); }
     </style>
 </head>
 <body class="bg-dark text-gray-300 font-sans antialiased selection:bg-primary/30 selection:text-white relative">
+
+    <!-- Toast pour la copie mail -->
+    <div id="toast-copy">E-mail copié !</div>
 
     <!-- AMBIANCE GREEN/ORANGE FADE -->
     <div class="fixed top-0 right-0 w-[800px] h-[800px] bg-emerald-600/10 rounded-full blur-[180px] -z-10 pointer-events-none"></div>
@@ -200,9 +211,14 @@
             </h2>
             
             <div class="flex flex-wrap justify-center gap-6 mt-12">
-                <a href="mailto:mertenswahil@gmail.com" class="px-10 py-5 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-emerald-900/40 flex items-center gap-3 hover:scale-105">
-                    <i data-lucide="mail" class="w-6 h-6"></i> Me Contacter
+                <!-- Redirige vers le bas -->
+                <a href="#contact" class="px-10 py-5 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-emerald-900/40 flex items-center gap-3 hover:scale-105">
+                    <i data-lucide="message-square" class="w-6 h-6"></i> Me Contacter
                 </a>
+                <!-- Ouvre la fenêtre Mail -->
+                <button onclick="openModal('modal-mail-choice')" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105 border-white/20">
+                    <i data-lucide="mail" class="w-6 h-6"></i> Mail
+                </button>
                 <a href="CV_Wahil_MERTENS.pdf" target="_blank" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105 border-white/20">
                     <i data-lucide="download" class="w-6 h-6"></i> Mon CV
                 </a>
@@ -315,7 +331,7 @@
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-lm.jpg" class="w-full h-full object-contain" alt="LM" onerror="this.style.display='none'"></div>
                                 <div>
                                     <h3 class="font-bold text-white text-xl">Logistique</h3>
-                                    <p class="text-emerald-500 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
+                                    <p class="text-emerald-400 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
                                 </div>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-2 text-base">
@@ -537,10 +553,11 @@
 
             <h2 class="text-4xl font-bold text-white mb-16">Me Contacter</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <a href="mailto:mertenswahil@gmail.com" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300">
+                <!-- Ouvre la modale de choix mail -->
+                <button onclick="openModal('modal-mail-choice')" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300 w-full">
                     <div class="w-16 h-16 rounded-full bg-blue-600/20 text-blue-500 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="mail" class="w-8 h-8"></i></div>
                     <span class="text-base text-gray-300 font-mono">mertenswahil@gmail.com</span>
-                </a>
+                </button>
                 <a href="https://linkedin.com" target="_blank" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300">
                     <div class="w-16 h-16 rounded-full bg-blue-800/20 text-blue-400 flex items-center justify-center group-hover:bg-blue-700 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="linkedin" class="w-8 h-8"></i></div>
                     <span class="text-base text-gray-300 font-mono">LinkedIn</span>
@@ -554,6 +571,27 @@
             <p class="mt-20 text-gray-600 text-sm">© 2025 Wahil Mertens</p>
         </div>
     </section>
+
+    <!-- FENETRE CHOIX MAIL -->
+    <div id="modal-mail-choice" class="modal">
+        <div class="glass-panel p-10 rounded-[2.5rem] w-full max-w-lg mx-6 modal-content text-center relative border-white/20">
+            <button class="absolute top-6 right-6 text-gray-400 hover:text-white transition" onclick="closeModal('modal-mail-choice')"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-8">
+                <i data-lucide="mail" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-2">Me contacter par E-mail</h3>
+            <p class="text-gray-400 mb-8 font-mono">mertenswahil@gmail.com</p>
+            
+            <div class="grid gap-4">
+                <button onclick="copyMail()" class="w-full py-5 bg-white text-black font-bold rounded-2xl hover:bg-gray-200 transition flex items-center justify-center gap-3">
+                    <i data-lucide="copy" class="w-5 h-5"></i> Copier l'adresse
+                </button>
+                <a href="mailto:mertenswahil@gmail.com" class="w-full py-5 glass-panel border-white/10 hover:bg-white/5 text-white font-bold rounded-2xl transition flex items-center justify-center gap-3">
+                    <i data-lucide="external-link" class="w-5 h-5"></i> Envoyer un message
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- MODALES DETAILS / LIGHTBOX (IMAGE CLICK) -->
     
@@ -715,9 +753,54 @@
     <script>
         lucide.createIcons();
         AOS.init();
-        function openModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('hidden'); m.style.display='flex'; setTimeout(() => m.classList.add('active'), 10); document.body.style.overflow = 'hidden'; }}
-        function closeModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('active'); setTimeout(() => { m.style.display='none'; m.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }}
-        document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if(e.target === m && m.id !== 'lightbox') closeModal(m.id); }); });
+
+        const email = "mertenswahil@gmail.com";
+
+        // GESTION MODALES
+        function openModal(id) { 
+            const m = document.getElementById(id); 
+            if(m){ 
+                m.classList.remove('hidden'); 
+                m.style.display='flex'; 
+                setTimeout(() => m.classList.add('active'), 10); 
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+
+        function closeModal(id) { 
+            const m = document.getElementById(id); 
+            if(m){ 
+                m.classList.remove('active'); 
+                setTimeout(() => { 
+                    m.style.display='none'; 
+                    m.classList.add('hidden'); 
+                }, 300); 
+                document.body.style.overflow = 'auto'; 
+            }
+        }
+
+        // COPIE MAIL
+        function copyMail() {
+            const tempInput = document.createElement("textarea");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // Notification
+            const toast = document.getElementById('toast-copy');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+            
+            closeModal('modal-mail-choice');
+        }
+
+        document.querySelectorAll('.modal').forEach(m => { 
+            m.addEventListener('click', e => { 
+                if(e.target === m && m.id !== 'lightbox') closeModal(m.id); 
+            }); 
+        });
         
         function toggleSection(id, iconId) {
             const content = document.getElementById(id);
