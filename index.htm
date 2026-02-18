@@ -33,6 +33,9 @@
                         'glow-green': '0 0 40px rgba(16, 185, 129, 0.2)',
                         'glow-orange': '0 0 40px rgba(249, 115, 22, 0.2)',
                         'premium': '0 0 25px rgba(255, 255, 255, 0.05), inset 0 0 0 1px rgba(255,255,255,0.1)'
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #111 1px, transparent 1px), linear-gradient(to bottom, #111 1px, transparent 1px)"
                     }
                 }
             }
@@ -40,7 +43,7 @@
     </script>
 
     <style>
-        /* SCROLLBAR PREMIUM (Vert -> Orange) */
+        /* SCROLLBAR PREMIUM */
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb {
@@ -48,17 +51,15 @@
             border-radius: 5px;
             border: 2px solid #050505;
         }
-        ::-webkit-scrollbar-thumb:hover { background: linear-gradient(to bottom, #059669, #ea580c); }
 
         body { background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
         
         .section-separator {
-            height: 2px; /* Ligne légèrement plus épaisse */
-            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.5), transparent); /* Couleur plus soutenue */
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(16, 185, 129, 0.3), transparent);
             margin: 0 auto;
-            width: 80%; /* Séparateur un peu plus large */
-            opacity: 0.8; /* Plus visible */
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.3); /* Légère lueur */
+            width: 80%;
+            opacity: 0.5;
         }
 
         .glass-panel {
@@ -70,7 +71,7 @@
         }
         
         .glass-panel:hover {
-            border-color: rgba(16, 185, 129, 0.3); /* Bordure verte au survol */
+            border-color: rgba(16, 185, 129, 0.3);
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
             background: rgba(255, 255, 255, 0.05);
@@ -111,35 +112,25 @@
             .timeline-row.left .flex.items-center.justify-end { justify-content: flex-start !important; flex-direction: row !important; }
         }
 
-        /* Badges Compétences Lumineux Individuels */
+        /* Badges Compétences Lumineux */
         .skill-badge {
             display: inline-block; padding: 8px 16px; border-radius: 10px;
             font-size: 0.9rem; font-family: 'JetBrains Mono', monospace; font-weight: 500;
             border: 1px solid transparent; transition: all 0.3s;
             background: rgba(255,255,255,0.03); cursor: default;
         }
-        /* Vert (Elec) */
+        
         .skill-green { color: #34d399; border-color: rgba(52,211,153,0.3); }
         .skill-green:hover { background: rgba(52,211,153,0.15); box-shadow: 0 0 20px rgba(52,211,153,0.4); border-color: #10b981; transform: translateY(-2px); }
 
-        /* Violet (Soft) */
         .skill-purple { color: #c084fc; border-color: rgba(192,132,252,0.3); }
-        .skill-purple:hover { background: rgba(192,132,252,0.15); box-shadow: 0 0 20px rgba(192,132,252,0.4); border-color: #c084fc; transform: translateY(-2px); }
+        .skill-purple:hover { background: rgba(192,132,252,0.15); box-shadow: 0 0 20px rgba(168,85,247,0.4); border-color: #c084fc; transform: translateY(-2px); }
 
-        /* Orange (Energie) */
         .skill-orange { color: #fb923c; border-color: rgba(251,146,60,0.3); }
         .skill-orange:hover { background: rgba(251,146,60,0.15); box-shadow: 0 0 20px rgba(251,146,60,0.4); border-color: #f97316; transform: translateY(-2px); }
 
-        /* Rouge (Meca) */
         .skill-red { color: #f87171; border-color: rgba(248,113,113,0.3); }
         .skill-red:hover { background: rgba(248,113,113,0.15); box-shadow: 0 0 20px rgba(248,113,113,0.4); border-color: #f87171; transform: translateY(-2px); }
-
-        /* Drapeaux Surbrillance */
-        .flag-card { transition: all 0.3s ease; border: 1px solid transparent; }
-        .flag-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.05); }
-        .flag-fr:hover { border-color: #10b981; box-shadow: 0 0 30px rgba(16, 185, 129, 0.2); }
-        .flag-gb:hover { border-color: #ef4444; box-shadow: 0 0 30px rgba(239, 68, 68, 0.2); }
-        .flag-es:hover { border-color: #f97316; box-shadow: 0 0 30px rgba(249, 115, 22, 0.2); }
 
         /* Accordion Scolarité */
         .accordion-content {
@@ -151,28 +142,17 @@
         .chevron.rotate { transform: rotate(180deg); }
 
         /* Modales */
-        .modal { opacity: 0; visibility: hidden; transition: all 0.3s; position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); }
-        .modal.active { opacity: 1; visibility: visible; }
+        .modal, .lightbox { opacity: 0; visibility: hidden; transition: all 0.3s; position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); }
+        .modal.active, .lightbox.active { opacity: 1; visibility: visible; }
         .modal-content { transform: scale(0.95); transition: all 0.3s; max-height: 90vh; overflow-y: auto; }
         .modal.active .modal-content { transform: scale(1); }
         
         .lightbox-img { max-height: 90vh; max-width: 90vw; object-fit: contain; border-radius: 12px; box-shadow: 0 0 50px rgba(0,0,0,0.8); }
-
-        /* Toast de copie */
-        #toast-copy {
-            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-            background: #10b981; color: white; padding: 0.75rem 1.5rem; border-radius: 1rem;
-            font-weight: 600; opacity: 0; transition: all 0.3s ease; z-index: 3000;
-        }
-        #toast-copy.show { opacity: 1; transform: translate(-50%, -1rem); }
     </style>
 </head>
 <body class="bg-dark text-gray-300 font-sans antialiased selection:bg-primary/30 selection:text-white relative">
 
-    <!-- Toast pour la copie mail -->
-    <div id="toast-copy">E-mail copié !</div>
-
-    <!-- AMBIANCE GREEN/ORANGE FADE -->
+    <!-- AMBIANCE GREEN/ORANGE -->
     <div class="fixed top-0 right-0 w-[800px] h-[800px] bg-emerald-600/10 rounded-full blur-[180px] -z-10 pointer-events-none"></div>
     <div class="fixed bottom-0 left-0 w-[600px] h-[600px] bg-orange-600/10 rounded-full blur-[150px] -z-10 pointer-events-none"></div>
     <div class="fixed inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none -z-20"></div>
@@ -181,7 +161,7 @@
     <nav class="fixed w-full z-50 glass-panel border-x-0 border-t-0 h-24 flex items-center bg-dark/80">
         <div class="max-w-7xl mx-auto px-8 w-full flex items-center justify-between">
             <div class="flex items-center gap-4">
-                <div class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-800 rounded-xl flex items-center justify-center text-white shadow-lg shadow-emerald-900/50">
+                <div class="w-12 h-12 bg-gradient-to-br from-emerald-600 to-teal-800 rounded-xl flex items-center justify-center text-white shadow-lg">
                     <span class="font-bold text-xl">W</span>
                 </div>
                 <div>
@@ -212,9 +192,8 @@
             </h2>
             
             <div class="flex flex-wrap justify-center gap-6 mt-12">
-                <!-- Redirige vers le bas -->
-                <a href="#contact" class="px-10 py-5 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-emerald-900/40 flex items-center gap-3 hover:scale-105">
-                    <i data-lucide="message-square" class="w-6 h-6"></i> Me Contacter
+                <a href="mailto:mertenswahil@gmail.com" class="px-10 py-5 bg-primary hover:bg-emerald-600 text-white rounded-2xl font-bold text-lg transition shadow-lg shadow-emerald-900/40 flex items-center gap-3 hover:scale-105">
+                    <i data-lucide="mail" class="w-6 h-6"></i> Me Contacter
                 </a>
                 <a href="CV_Wahil_MERTENS.pdf" target="_blank" class="px-10 py-5 glass-panel hover:bg-white/10 text-white rounded-2xl font-bold text-lg transition flex items-center gap-3 hover:scale-105 border-white/20">
                     <i data-lucide="download" class="w-6 h-6"></i> Mon CV
@@ -251,7 +230,6 @@
                 <div class="glass-panel rounded-3xl group overflow-hidden" data-aos="fade-up" data-aos-delay="100">
                     <div class="p-10 flex flex-col md:flex-row items-center gap-8 cursor-pointer" onclick="toggleSection('edu-licence', 'icon-licence')">
                         <div class="w-24 h-24 bg-white rounded-2xl p-2 flex items-center justify-center shrink-0 shadow-lg">
-                            <!-- LOGO UPEC -->
                             <img src="./images/logo-upec.jpg" class="w-full h-full object-contain" alt="UPEC" onerror="this.style.display='none'">
                         </div>
                         <div class="flex-grow text-center md:text-left">
@@ -328,7 +306,7 @@
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-lm.jpg" class="w-full h-full object-contain" alt="LM" onerror="this.style.display='none'"></div>
                                 <div>
                                     <h3 class="font-bold text-white text-xl">Logistique</h3>
-                                    <p class="text-emerald-400 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
+                                    <p class="text-emerald-500 font-mono text-sm mt-1">Leroy Merlin | 2024</p>
                                 </div>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-2 text-base">
@@ -344,18 +322,17 @@
                 <div class="timeline-row left" data-aos="fade-right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="glass-panel p-8 rounded-2xl hover:border-blue-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
+                        <div class="glass-panel p-8 rounded-2xl hover:border-emerald-500/50 shadow-premium transition duration-300 transform hover:-translate-y-1">
                             <div class="flex items-center justify-end gap-6 mb-6 border-b border-white/10 pb-4 logo-container">
                                 <div class="text-right">
                                     <h3 class="font-bold text-white text-xl">Magasinier</h3>
-                                    <p class="text-blue-500 font-mono text-sm mt-1">D&eacute;cathlon | 2023</p>
+                                    <p class="text-emerald-500 font-mono text-sm mt-1">D&eacute;cathlon | 2023</p>
                                 </div>
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden"><img src="./images/logo-decathlon.jpg" class="w-full h-full object-contain" alt="Decath" onerror="this.style.display='none'"></div>
                             </div>
                             <ul class="text-gray-300 list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
                                 <li dir="ltr">R&eacute;ception marchandises.</li>
                                 <li dir="ltr">Gestion de stock.</li>
-                                <li dir="ltr">Inventaires tournants.</li>
                             </ul>
                         </div>
                     </div>
@@ -371,9 +348,31 @@
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl md:text-6xl font-bold text-white mb-20 text-center" data-aos="fade-up">Projets Académiques</h2>
             
+            <!-- 3EME ANNEE (BUT 3) - NOUVEAU -->
+            <div class="mb-24">
+                <h3 class="text-2xl font-bold text-white mb-10 pl-6 border-l-4 border-emerald-500 font-sans tracking-wide">3ème Année (BUT 3)</h3>
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- TurtleBot -->
+                    <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow transition duration-500" onclick="openModal('modal-turtlebot')" data-aos="fade-up">
+                        <div class="h-64 bg-zinc-900 relative overflow-hidden">
+                            <img src="./images/image-turtlebot.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700" alt="TurtleBot" onerror="this.src='https://via.placeholder.com/800x500?text=TurtleBot'">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-primary transition">Navigation Autonome TurtleBot</h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed text-lg font-light">Déplacement autonome d'un point A à un point B avec l'aide d'un capteur Lidar.</p>
+                            <div class="flex gap-3">
+                                <span class="skill-badge skill-green">ROS</span>
+                                <span class="skill-badge skill-green">Lidar</span>
+                                <span class="skill-badge skill-green">Python</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- 2EME ANNEE -->
             <div class="mb-24">
-                <h3 class="text-2xl font-bold text-white mb-10 pl-6 border-l-4 border-primary font-sans">2ème Année (BUT 2)</h3>
+                <h3 class="text-2xl font-bold text-white mb-10 pl-6 border-l-4 border-primary font-sans tracking-wide">2ème Année (BUT 2)</h3>
                 <div class="grid md:grid-cols-2 gap-10">
                     <!-- Station Météo -->
                     <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow transition duration-500" onclick="openModal('modal-lora')" data-aos="fade-up">
@@ -382,7 +381,7 @@
                         </div>
                         <div class="p-8">
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-primary transition">Station IoT LoRaWAN</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed text-lg">Système complet de surveillance environnementale. Capteurs I2C, Microcontrôleur STM32 et transmission radio.</p>
+                            <p class="text-gray-400 mb-6 leading-relaxed text-lg font-light">Système complet de surveillance environnementale. Capteurs I2C, Microcontrôleur STM32 et transmission radio.</p>
                             <div class="flex gap-3">
                                 <span class="skill-badge skill-green">KiCad</span>
                                 <span class="skill-badge skill-green">SHT31</span>
@@ -395,7 +394,7 @@
 
             <!-- 1ERE ANNEE -->
             <div>
-                <h3 class="text-2xl font-bold text-white mb-10 pl-6 border-l-4 border-accent font-sans">1ère Année (BUT 1)</h3>
+                <h3 class="text-2xl font-bold text-white mb-10 pl-6 border-l-4 border-accent font-sans tracking-wide">1ère Année (BUT 1)</h3>
                 <div class="grid md:grid-cols-2 gap-10">
                     <!-- Oscillo -->
                     <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow transition duration-500" onclick="openModal('modal-oscillo')" data-aos="fade-up">
@@ -404,26 +403,25 @@
                         </div>
                         <div class="p-8">
                             <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-accent transition">Oscilloscope Numérique</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed text-lg">Conception d'un outil de mesure. Chaîne d'acquisition analogique (AOP), filtrage et numérisation.</p>
+                            <p class="text-gray-400 mb-6 leading-relaxed text-lg font-light">Conception d'un outil de mesure. Chaîne d'acquisition analogique (AOP), filtrage et numérisation.</p>
                             <div class="flex gap-3">
                                 <span class="skill-badge skill-orange">Analogique</span>
                                 <span class="skill-badge skill-orange">PCB</span>
                                 <span class="skill-badge skill-orange">TLV272</span>
-                                <span class="skill-badge skill-orange">Python</span>
                             </div>
                         </div>
                     </div>
                     <!-- Robot -->
-                    <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow transition duration-500" onclick="openModal('modal-robot')" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-panel rounded-2xl overflow-hidden group cursor-pointer hover:shadow-glow-gold transition duration-500" onclick="openModal('modal-robot')" data-aos="fade-up" data-aos-delay="100">
                         <div class="h-64 bg-zinc-900 relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-900/20 to-black">
                             <img src="./images/image-robot.jpg" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition duration-700" alt="Robot" onerror="this.src='https://via.placeholder.com/800x500?text=Robot'">
                         </div>
                         <div class="p-8">
-                            <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-accent transition">Robot Mobile</h3>
-                            <p class="text-gray-400 mb-6 leading-relaxed text-lg">Robot éviteur d'obstacles autonome. Programmation Arduino C++ et intégration capteurs.</p>
+                            <h3 class="text-3xl font-bold text-white mb-3 group-hover:text-gold transition">Robot Mobile</h3>
+                            <p class="text-gray-400 mb-6 leading-relaxed text-lg font-light">Robot éviteur d'obstacles autonome. Programmation Arduino C++ et intégration capteurs.</p>
                              <div class="flex gap-3">
-                                <span class="skill-badge skill-orange">Arduino</span>
-                                <span class="skill-badge skill-orange">C++</span>
+                                <span class="skill-badge skill-yellow">Arduino</span>
+                                <span class="skill-badge skill-yellow">C++</span>
                             </div>
                         </div>
                     </div>
@@ -438,29 +436,17 @@
         <div class="max-w-5xl mx-auto px-6 text-center">
             <h2 class="text-4xl md:text-6xl font-bold text-white mb-20" data-aos="fade-up">Langues</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- FR -->
                 <div class="glass-panel p-8 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition hover:-translate-y-2 duration-300 shadow-glow flag-card flag-fr" data-aos="fade-up">
                     <img src="https://flagcdn.com/w80/fr.png" alt="France" class="w-16 h-auto rounded-lg shadow-lg">
-                    <div class="text-left">
-                        <div class="font-bold text-white text-xl">Français</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-wide font-bold">Maternel</div>
-                    </div>
+                    <div class="text-left"><div class="font-bold text-white text-xl">Français</div><div class="text-sm text-gray-500 font-bold">Maternel</div></div>
                 </div>
-                <!-- GB -->
                 <div class="glass-panel p-8 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition hover:-translate-y-2 duration-300 shadow-glow flag-card flag-gb" data-aos="fade-up" data-aos-delay="100">
                     <img src="https://flagcdn.com/w80/gb.png" alt="UK" class="w-16 h-auto rounded-lg shadow-lg">
-                    <div class="text-left">
-                        <div class="font-bold text-white text-xl">Anglais</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-wide font-bold">B2 Pro</div>
-                    </div>
+                    <div class="text-left"><div class="font-bold text-white text-xl">Anglais</div><div class="text-sm text-gray-500 font-bold">B2 Pro</div></div>
                 </div>
-                <!-- ES -->
                 <div class="glass-panel p-8 rounded-3xl flex items-center gap-6 hover:bg-white/5 transition hover:-translate-y-2 duration-300 shadow-glow flag-card flag-es" data-aos="fade-up" data-aos-delay="200">
                     <img src="https://flagcdn.com/w80/es.png" alt="Spain" class="w-16 h-auto rounded-lg shadow-lg">
-                    <div class="text-left">
-                        <div class="font-bold text-white text-xl">Espagnol</div>
-                        <div class="text-sm text-gray-500 uppercase tracking-wide font-bold">B1 Inter.</div>
-                    </div>
+                    <div class="text-left"><div class="font-bold text-white text-xl">Espagnol</div><div class="text-sm text-gray-500 font-bold">B1 Inter.</div></div>
                 </div>
             </div>
         </div>
@@ -480,14 +466,9 @@
                         <h3 class="text-3xl font-bold text-white">Électronique</h3>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge skill-green">KiCad</span>
-                        <span class="skill-badge skill-green">STM32</span>
-                        <span class="skill-badge skill-green">Filtres</span>
-                        <span class="skill-badge skill-green">Amplificateurs</span>
-                        <span class="skill-badge skill-green">CAN / CNA</span>
+                        <span class="skill-badge skill-green">KiCad</span><span class="skill-badge skill-green">STM32</span><span class="skill-badge skill-green">Filtres</span><span class="skill-badge skill-green">Amplificateurs</span>
                     </div>
                 </div>
-
                 <!-- Carte Soft -->
                 <div class="glass-panel p-10 rounded-[2rem] group hover:border-purple-500/50 transition duration-500" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-6 mb-8 text-purple-400">
@@ -495,14 +476,9 @@
                         <h3 class="text-3xl font-bold text-white">Software</h3>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge skill-purple">C / C++</span>
-                        <span class="skill-badge skill-purple">Python</span>
-                        <span class="skill-badge skill-purple">Matlab</span>
-                        <span class="skill-badge skill-purple">Simulink</span>
-                        <span class="skill-badge skill-purple">Proteus</span>
+                        <span class="skill-badge skill-purple">C / C++</span><span class="skill-badge skill-purple">Python</span><span class="skill-badge skill-purple">Matlab</span><span class="skill-badge skill-purple">Simulink</span>
                     </div>
                 </div>
-
                 <!-- Carte Energie -->
                 <div class="glass-panel p-10 rounded-[2rem] group hover:border-orange-500/50 transition duration-500" data-aos="fade-up">
                     <div class="flex items-center gap-6 mb-8 text-orange-400">
@@ -510,13 +486,9 @@
                         <h3 class="text-3xl font-bold text-white">Énergie</h3>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge skill-orange">Triphasé</span>
-                        <span class="skill-badge skill-orange">Régulation PID</span>
-                        <span class="skill-badge skill-orange">Habilitation</span>
-                        <span class="skill-badge skill-orange">LoRaWAN</span>
+                        <span class="skill-badge skill-orange">Triphasé</span><span class="skill-badge skill-orange">PID</span><span class="skill-badge skill-orange">LoRaWAN</span><span class="skill-badge skill-orange">Habilitation</span>
                     </div>
                 </div>
-
                 <!-- Carte Méca -->
                 <div class="glass-panel p-10 rounded-[2rem] group hover:border-red-500/50 transition duration-500" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center gap-6 mb-8 text-red-400">
@@ -524,10 +496,7 @@
                         <h3 class="text-3xl font-bold text-white">Mécanique</h3>
                     </div>
                     <div class="flex flex-wrap gap-4">
-                        <span class="skill-badge skill-red">Diagnostic</span>
-                        <span class="skill-badge skill-red">Hybride/Elec</span>
-                        <span class="skill-badge skill-red">Valise Diag</span>
-                        <span class="skill-badge skill-red">Maintenance</span>
+                        <span class="skill-badge skill-red">Diagnostic</span><span class="skill-badge skill-red">Vidange</span><span class="skill-badge skill-red">Valise</span><span class="skill-badge skill-red">Maintenance</span>
                     </div>
                 </div>
             </div>
@@ -549,111 +518,68 @@
             </div>
 
             <h2 class="text-4xl font-bold text-white mb-16">Me Contacter</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Ouvre la modale de choix mail -->
-                <button onclick="openModal('modal-mail-choice')" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300 w-full">
+            <div class="grid md:grid-cols-2 gap-8 max-w-2xl mx-auto">
+                <a href="mailto:mertenswahil@gmail.com" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300">
                     <div class="w-16 h-16 rounded-full bg-blue-600/20 text-blue-500 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="mail" class="w-8 h-8"></i></div>
                     <span class="text-base text-gray-300 font-mono">mertenswahil@gmail.com</span>
-                </button>
+                </a>
                 <a href="https://linkedin.com" target="_blank" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300">
                     <div class="w-16 h-16 rounded-full bg-blue-800/20 text-blue-400 flex items-center justify-center group-hover:bg-blue-700 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="linkedin" class="w-8 h-8"></i></div>
                     <span class="text-base text-gray-300 font-mono">LinkedIn</span>
                 </a>
-                <a href="tel:+33768317163" class="glass-panel p-10 rounded-[2rem] flex flex-col items-center gap-6 hover:bg-white/5 transition group duration-300">
-                    <div class="w-16 h-16 rounded-full bg-green-600/20 text-green-500 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="phone" class="w-8 h-8"></i></div>
-                    <span class="text-base text-gray-300 font-mono">07 68 31 71 63</span>
-                </a>
             </div>
-            
             <p class="mt-20 text-gray-600 text-sm">© 2025 Wahil Mertens</p>
         </div>
     </section>
 
-    <!-- FENETRE CHOIX MAIL -->
-    <div id="modal-mail-choice" class="modal">
-        <div class="glass-panel p-10 rounded-[2.5rem] w-full max-w-lg mx-6 modal-content text-center relative border-white/20">
-            <button class="absolute top-6 right-6 text-gray-400 hover:text-white transition" onclick="closeModal('modal-mail-choice')"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <div class="w-20 h-20 bg-emerald-500/20 text-emerald-400 rounded-2xl flex items-center justify-center mx-auto mb-8">
-                <i data-lucide="mail" class="w-10 h-10"></i>
-            </div>
-            <h3 class="text-2xl font-bold text-white mb-2">Me contacter par E-mail</h3>
-            <p class="text-gray-400 mb-8 font-mono">mertenswahil@gmail.com</p>
-            
-            <div class="grid gap-4">
-                <button onclick="copyMail()" class="w-full py-5 bg-white text-black font-bold rounded-2xl hover:bg-gray-200 transition flex items-center justify-center gap-3">
-                    <i data-lucide="copy" class="w-5 h-5"></i> Copier l'adresse
-                </button>
-                <a href="mailto:mertenswahil@gmail.com" class="w-full py-5 glass-panel border-white/10 hover:bg-white/5 text-white font-bold rounded-2xl transition flex items-center justify-center gap-3">
-                    <i data-lucide="external-link" class="w-5 h-5"></i> Envoyer un message
-                </a>
-            </div>
-        </div>
-    </div>
+    <!-- MODALES -->
 
-    <!-- MODALES DETAILS / LIGHTBOX (IMAGE CLICK) -->
-    
-    <!-- Lightbox Container -->
-    <div id="lightbox" class="modal z-[2000]" onclick="closeLightbox()">
-        <img id="lightbox-img" class="lightbox-img transition-all duration-300 transform scale-95" src="" onclick="event.stopPropagation()">
-        <button class="absolute top-6 right-6 text-white p-3 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-8 h-8"></i></button>
-    </div>
-
-    <!-- LoRaWAN (Contenu du PDF) -->
-    <div id="modal-lora" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
-        <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-lora')"><i data-lucide="x"></i></button>
+    <!-- TurtleBot (NEW) -->
+    <div id="modal-turtlebot" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
+        <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-turtlebot')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
-            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group">
-                <img src="./images/detail-lora-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=PCB+et+Composants'">
-            </div>
-            <div class="h-1/2 relative overflow-hidden group">
-                <img src="./images/detail-lora-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Dashboard+TagoIO'">
-            </div>
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-turtlebot-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Turtlebot'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-turtlebot-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Cartographie+Lidar'"></div>
         </div>
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
-            <h2 class="text-4xl font-bold text-white mb-2">Station Météo LoRaWAN</h2>
-            <div class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400 text-xs font-mono font-bold mb-8">SAE 4.02 - ESE 2</div>
-            
-            <div class="space-y-8 text-gray-300 leading-relaxed">
+            <h2 class="text-4xl font-bold text-white mb-2">Navigation Autonome TurtleBot</h2>
+            <div class="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded text-emerald-400 text-xs font-mono font-bold mb-8">SAÉ 5.01 - BUT 3</div>
+            <div class="space-y-8 text-gray-300 leading-relaxed text-sm">
                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-blue-500"></i> Objectif du Projet</h4>
-                    <p>Conception et mise en œuvre d'une solution IoT complète pour la surveillance environnementale (Température & Humidité) utilisant le protocole basse consommation LoRaWAN.</p>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-emerald-500"></i> Objectif</h4>
+                    <p>Programmer un robot mobile TurtleBot pour qu'il se déplace de manière autonome d'un point A à un point B dans un environnement inconnu.</p>
                 </div>
-                
                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-blue-500"></i> Architecture Matérielle</h4>
+                    <h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-emerald-500"></i> Technologie</h4>
                     <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li><strong>Capteur :</strong> SHT31 (Précision ±0.3°C) via bus I2C.</li>
-                        <li><strong>Microcontrôleur :</strong> STM32 Nucleo L432KC (ARM Cortex-M4).</li>
-                        <li><strong>Communication :</strong> Module LoRa XM001 Nemeus (Liaison UART, Commandes AT).</li>
-                        <li><strong>Alimentation :</strong> Batterie Li-ion avec BMS TP4056.</li>
-                        <li><strong>PCB :</strong> Conception et routage double couche sous KiCad.</li>
+                        <li><strong>Capteur :</strong> Lidar 360° pour la détection d'obstacles et la cartographie (SLAM).</li>
+                        <li><strong>OS :</strong> ROS (Robot Operating System) sur Raspberry Pi.</li>
+                        <li><strong>Navigation :</strong> Utilisation de la Navigation Stack pour la planification de trajectoire.</li>
+                        <li><strong>Langage :</strong> Python pour les scripts de contrôle.</li>
                     </ul>
-                </div>
-
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-blue-500"></i> Logiciel & Cloud</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li><strong>Embarqué :</strong> Développement en C (HAL Libraries) : Drivers I2C/UART, Gestion énergie.</li>
-                        <li><strong>Réseau :</strong> Configuration Gateway LoRaWAN et Cloud TTN (The Things Network).</li>
-                        <li><strong>Application :</strong> Dashboard de visualisation temps réel sur Tago.io (Widgets T°, Humidité, Batterie).</li>
-                    </ul>
-                </div>
-
-                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-500"></i> Compétences Validées</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge skill-green">Conception</span>
-                        <span class="skill-badge skill-green">Vérification</span>
-                        <span class="skill-badge skill-green">KiCad</span>
-                        <span class="skill-badge skill-green">STM32 (C)</span>
-                        <span class="skill-badge skill-green">LoRaWAN</span>
-                        <span class="skill-badge skill-green">IoT Cloud</span>
-                    </div>
                 </div>
             </div>
         </div>
     </div></div>
     
+    <!-- LoRaWAN -->
+    <div id="modal-lora" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
+        <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-lora')"><i data-lucide="x"></i></button>
+        <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
+            <div class="h-1/2 relative border-b border-white/5 overflow-hidden group"><img src="./images/detail-lora-1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=PCB+et+Composants'"></div>
+            <div class="h-1/2 relative overflow-hidden group"><img src="./images/detail-lora-2.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-105 cursor-zoom-in" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Dashboard+TagoIO'"></div>
+        </div>
+        <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
+            <h2 class="text-4xl font-bold text-white mb-2">Station Météo LoRaWAN</h2>
+            <div class="inline-block px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-blue-400 text-xs font-mono font-bold mb-8">SAE 4.02 - ESE 2</div>
+            <div class="space-y-8 text-gray-300 leading-relaxed text-sm">
+                <div><h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-blue-500"></i> Objectif</h4><p>Conception et mise en œuvre d'une solution IoT complète pour la surveillance environnementale (Température & Humidité).</p></div>
+                <div><h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-blue-500"></i> Matériel</h4><ul class="list-disc list-inside space-y-2 ml-2"><li>Capteur SHT31 (I2C).</li><li>STM32 Nucleo L432KC.</li><li>Module LoRa XM001.</li><li>PCB sous KiCad.</li></ul></div>
+            </div>
+        </div>
+    </div></div>
+    
+    <!-- Oscillo -->
     <div id="modal-oscillo" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-oscillo')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
@@ -663,42 +589,13 @@
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
             <h2 class="text-4xl font-bold text-white mb-2">Oscilloscope Numérique</h2>
             <div class="inline-block px-3 py-1 bg-green-500/10 border border-green-500/30 rounded text-green-400 text-xs font-mono font-bold mb-8">PROJET 1ÈRE ANNÉE</div>
-            
-            <div class="space-y-8 text-gray-300 leading-relaxed">
-                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-green-500"></i> Objectif</h4>
-                    <p>Réalisation complète d'un instrument de mesure, de la chaîne d'acquisition analogique à l'affichage numérique.</p>
-                </div>
-                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-green-500"></i> Chaîne d'Acquisition</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li><strong>Analogique :</strong> Adaptation de signal (Pont diviseur), Décalage d'offset, Amplification (TLV272), Multiplexeur.</li>
-                        <li><strong>Protection :</strong> Diodes Zener pour protéger le microcontrôleur.</li>
-                        <li><strong>Filtrage :</strong> Filtre anti-repliement (Nyquist) actif.</li>
-                        <li><strong>Alimentation :</strong> Régulation de tension symétrique (+15V / -15V).</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code-2" class="w-4 h-4 text-green-500"></i> Traitement Numérique</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li>Conversion Analogique-Numérique (ADC) sur STM32.</li>
-                        <li>Transmission des échantillons via UART (Série) vers le PC.</li>
-                        <li>Interface graphique Python pour tracer la courbe en temps réel.</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i> Compétences Validées</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge skill-orange">Analogique</span>
-                        <span class="skill-badge skill-orange">PCB</span>
-                        <span class="skill-badge skill-orange">TLV272</span>
-                        <span class="skill-badge skill-orange">Python</span>
-                    </div>
-                </div>
+            <div class="space-y-8 text-gray-300 leading-relaxed text-sm">
+                <div><h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-green-500"></i> Chaîne d'Acquisition</h4><ul class="list-disc list-inside space-y-2 ml-2"><li>Analogique : Adaptation, Offset, Amplification.</li><li>Protection Diodes Zener.</li><li>Filtrage anti-repliement.</li></ul></div>
             </div>
         </div>
     </div></div>
 
+    <!-- Robot -->
     <div id="modal-robot" class="modal"><div class="bg-zinc-950 border border-white/10 rounded-2xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content">
         <button class="absolute top-6 right-6 text-white z-20 bg-black/50 p-3 rounded-full hover:bg-red-500 transition" onclick="closeModal('modal-robot')"><i data-lucide="x"></i></button>
         <div class="w-full md:w-1/2 h-full flex flex-col border-r border-white/5">
@@ -708,121 +605,28 @@
         <div class="w-full md:w-1/2 p-12 overflow-y-auto bg-zinc-900/50">
             <h2 class="text-4xl font-bold text-white mb-2">Robot Mobile Autonome</h2>
             <div class="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/30 rounded text-orange-400 text-xs font-mono font-bold mb-8">SAÉ 2.01 - ESE 1</div>
-            
-            <div class="space-y-8 text-gray-300 leading-relaxed">
-                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-orange-500"></i> Objectif</h4>
-                    <p>Conception et réalisation d'un robot mobile capable de naviguer en autonomie, d'éviter les obstacles et de les contourner intelligemment.</p>
-                </div>
-                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-orange-500"></i> Matériel & Simulation</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li><strong>Microcontrôleur :</strong> Arduino UNO.</li>
-                        <li><strong>Actionneurs :</strong> 2 Moteurs CC pilotés par un driver L293D.</li>
-                        <li><strong>Capteurs :</strong> 3 Capteurs Ultrasons (Gauche, Centre, Droite).</li>
-                        <li><strong>Alimentation :</strong> Batterie 9V avec gestion BMS (Simulation Kicad).</li>
-                        <li><strong>Outils :</strong> Simulation complète du câblage sous Tinkercad.</li>
-                    </ul>
-                </div>
-                 <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4 text-orange-500"></i> Logique & Algorithme</h4>
-                    <ul class="list-disc list-inside space-y-2 ml-2">
-                        <li>Détection d'obstacles via mesures ultrasons.</li>
-                        <li>Stratégies d'évitement : Demi-tour, virage large/serré.</li>
-                        <li>Algorithme de contournement par la gauche (Suivi de mur).</li>
-                        <li>Programmation en C++ (Gestion PWM moteurs).</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-3 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-500"></i> Compétences Validées</h4>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="skill-badge skill-orange">Conception</span>
-                        <span class="skill-badge skill-orange">Vérification</span>
-                        <span class="skill-badge skill-orange">Arduino (C++)</span>
-                        <span class="skill-badge skill-orange">Robotique</span>
-                    </div>
-                </div>
+            <div class="space-y-8 text-gray-300 leading-relaxed text-sm">
+                 <div><h4 class="text-white font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-orange-500"></i> Matériel</h4><ul class="list-disc list-inside space-y-2 ml-2"><li>Arduino UNO.</li><li>3 Capteurs Ultrasons.</li><li>Driver L293D.</li></ul></div>
             </div>
         </div>
     </div></div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="modal z-[2000]" onclick="closeLightbox()">
+        <img id="lightbox-img" class="lightbox-img transition-all duration-300 transform scale-95" src="" onclick="event.stopPropagation()">
+        <button class="absolute top-6 right-6 text-white p-3 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-8 h-8"></i></button>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         lucide.createIcons();
         AOS.init();
-
-        const email = "mertenswahil@gmail.com";
-
-        // GESTION MODALES
-        function openModal(id) { 
-            const m = document.getElementById(id); 
-            if(m){ 
-                m.classList.remove('hidden'); 
-                m.style.display='flex'; 
-                setTimeout(() => m.classList.add('active'), 10); 
-                document.body.style.overflow = 'hidden'; 
-            }
-        }
-
-        function closeModal(id) { 
-            const m = document.getElementById(id); 
-            if(m){ 
-                m.classList.remove('active'); 
-                setTimeout(() => { 
-                    m.style.display='none'; 
-                    m.classList.add('hidden'); 
-                }, 300); 
-                document.body.style.overflow = 'auto'; 
-            }
-        }
-
-        // COPIE MAIL
-        function copyMail() {
-            const tempInput = document.createElement("textarea");
-            tempInput.value = email;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            
-            // Notification
-            const toast = document.getElementById('toast-copy');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
-            
-            closeModal('modal-mail-choice');
-        }
-
-        document.querySelectorAll('.modal').forEach(m => { 
-            m.addEventListener('click', e => { 
-                if(e.target === m && m.id !== 'lightbox') closeModal(m.id); 
-            }); 
-        });
-        
-        function toggleSection(id, iconId) {
-            const content = document.getElementById(id);
-            const icon = document.getElementById(iconId);
-            content.classList.toggle('open');
-            icon.classList.toggle('rotate-180');
-        }
-
-        // Lightbox Functions
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.src = src;
-            lb.classList.remove('hidden');
-            lb.classList.add('active');
-            setTimeout(() => img.classList.remove('scale-95'), 50);
-        }
-
-        function closeLightbox() {
-            const lb = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.classList.add('scale-95');
-            lb.classList.remove('active');
-            setTimeout(() => lb.classList.add('hidden'), 300);
-        }
+        function openModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('hidden'); m.style.display='flex'; setTimeout(() => m.classList.add('active'), 10); document.body.style.overflow = 'hidden'; }}
+        function closeModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('active'); setTimeout(() => { m.style.display='none'; m.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }}
+        document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if(e.target === m && m.id !== 'lightbox') closeModal(m.id); }); });
+        function toggleSection(id, iconId) { const c = document.getElementById(id); const i = document.getElementById(iconId); c.classList.toggle('open'); i.classList.toggle('rotate-180'); }
+        function openLightbox(src) { const lb = document.getElementById('lightbox'); const img = document.getElementById('lightbox-img'); img.src = src; lb.classList.remove('hidden'); lb.classList.add('active'); setTimeout(() => img.classList.remove('scale-95'), 50); }
+        function closeLightbox() { const lb = document.getElementById('lightbox'); const img = document.getElementById('lightbox-img'); img.classList.add('scale-95'); lb.classList.remove('active'); setTimeout(() => lb.classList.add('hidden'), 300); }
     </script>
 </body>
 </html>
