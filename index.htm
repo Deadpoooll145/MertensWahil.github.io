@@ -285,7 +285,7 @@
                         </div>
                         <div class="flex-grow text-center md:text-left">
                             <h3 class="text-3xl font-bold text-slate900">Licence Physique</h3>
-                            <p class="text-xl text-slate-500 mt-2">UPEC (Paris-Est Cr&eacute;teil) | <span class="text-blue-500 font-mono font-bold">2022 - 2023</span></p>
+                            <p class="text-xl text-slate-500 mt-2">Université Évry Paris-Saclay | <span class="text-blue-500 font-mono font-bold">2022 - 2023</span></p>
                         </div>
                          <i data-lucide="chevron-down" id="icon-licence" class="w-8 h-8 text-slate-400 transition-transform chevron"></i>
                     </div>
@@ -306,44 +306,46 @@
             <div class="timeline-container">
                 <div class="timeline-line"></div>
 
-                <!-- IPN -->
+                <!-- IPN (Cliquable) -->
                 <div class="timeline-row right" data-aos="fade-left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="glass-panel hover-green p-8">
+                        <div class="glass-panel hover-green p-8 cursor-pointer group" onclick="openModal('modal-ipn')">
                             <div class="flex items-center gap-6 mb-6 border-b border-slate-200 pb-4">
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden border border-slate-200"><img src="./images/logo-ipn.jpg" class="w-full h-full object-contain" alt="IPN" onerror="this.style.display='none'"></div>
                                 <div>
-                                    <h3 class="font-bold text-slate900 text-xl">Stagiaire R&D</h3>
+                                    <h3 class="font-bold text-slate900 text-xl group-hover:text-primary transition">Stagiaire R&D</h3>
                                     <p class="text-emerald-600 font-mono text-sm mt-1 font-bold">IPN Mexique | 2025</p>
                                 </div>
                             </div>
                             <ul class="text-slate-700 list-disc list-inside space-y-2 text-base">
-                                <li>Conception syst&egrave;me d'asservissement thermique.</li>
+                                <li>Conception syst&egrave;me de régulation thermique.</li>
                                 <li>Mod&eacute;lisation Matlab/Simulink.</li>
-                                <li>R&eacute;gulation PID avanc&eacute;e.</li>
+                                <li>R&eacute;gulation PID et simulation sous Proteus.</li>
                             </ul>
+                            <div class="mt-4 text-xs font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity"><i data-lucide="plus-circle" class="w-4 h-4"></i> Voir les détails</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Riester -->
+                <!-- Riester (Cliquable) -->
                 <div class="timeline-row left" data-aos="fade-right">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
-                        <div class="glass-panel hover-orange p-8">
+                        <div class="glass-panel hover-orange p-8 cursor-pointer group" onclick="openModal('modal-riester')">
                             <div class="flex items-center justify-end gap-6 mb-6 border-b border-slate-200 pb-4 logo-container">
                                 <div class="text-right">
-                                    <h3 class="font-bold text-slate900 text-xl">M&eacute;canicien</h3>
+                                    <h3 class="font-bold text-slate900 text-xl group-hover:text-orange-500 transition">Technicien Automobile</h3>
                                     <p class="text-orange-500 font-mono text-sm mt-1 font-bold">Groupe Riester | 2024</p>
                                 </div>
                                 <div class="w-16 h-16 bg-white rounded-xl p-1 shrink-0 overflow-hidden border border-slate-200"><img src="./images/logo-riester.jpg" class="w-full h-full object-contain" alt="Riester" onerror="this.style.display='none'"></div>
                             </div>
                             <ul class="text-slate-700 list-disc list-inside space-y-2 text-base text-right" style="direction: rtl; text-align: left;">
-                                <li dir="ltr">Diagnostic &eacute;lectronique approfondi.</li>
-                                <li dir="ltr">Maintenance v&eacute;hicules hybrides.</li>
-                                <li dir="ltr">Gestion batteries haute tension.</li>
+                                <li dir="ltr">Diagnostic &eacute;lectronique (Diagbox, Witech).</li>
+                                <li dir="ltr">Intervention Haute Tension (Batteries).</li>
+                                <li dir="ltr">Remplacement onduleur et chargeur embarqué.</li>
                             </ul>
+                            <div class="mt-4 text-xs font-bold text-orange-500 uppercase tracking-widest flex items-center justify-end gap-1 opacity-0 group-hover:opacity-100 transition-opacity" style="direction: rtl; text-align: left;"><i data-lucide="plus-circle" class="w-4 h-4"></i> Voir les détails</div>
                         </div>
                     </div>
                 </div>
@@ -593,8 +595,7 @@
             <div class="mb-20">
                 <h3 class="text-2xl font-bold text-slate900 mb-10">Centres d'Intérêt</h3>
                 <div class="flex justify-center gap-12 text-5xl opacity-70 hover:opacity-100 transition duration-500 text-slate-500">
-                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition hover:text-slate-800"><span>⚽</span><span class="text-sm font-mono tracking-widest font-bold">FOOT</span></div>
-                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition hover:text-slate-800"><span>🚴</span><span class="text-sm font-mono tracking-widest font-bold">CYCLISME</span></div>
+                    <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition hover:text-slate-800"><span>🏋️</span><span class="text-sm font-mono tracking-widest font-bold">SALLE DE SPORT</span></div>
                     <div class="flex flex-col items-center gap-4 hover:-translate-y-2 transition hover:text-slate-800"><span>🏊</span><span class="text-sm font-mono tracking-widest font-bold">NATATION</span></div>
                 </div>
             </div>
@@ -621,6 +622,108 @@
     <div id="lightbox" class="modal z-[2000]" onclick="closeLightbox()">
         <img id="lightbox-img" class="lightbox-img transition-all duration-300 transform scale-95" src="" onclick="event.stopPropagation()">
         <button class="absolute top-6 right-6 text-white p-3 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-8 h-8"></i></button>
+    </div>
+
+    <!-- Modale IPN (Stage Mexique) -->
+    <div id="modal-ipn" class="modal">
+        <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
+            <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-ipn')"><i data-lucide="x"></i></button>
+            
+            <div class="w-full md:w-1/2 h-full bg-slate-100 border-r border-slate-200 overflow-y-auto p-6 space-y-6 flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
+                    <img src="./images/detail-ipn-1.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Simulation+Matlab+PID'">
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
+                    <img src="./images/detail-ipn-2.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Validation+Capteur+Arduino'">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-12 overflow-y-auto">
+                <h2 class="text-4xl font-bold text-slate-900 mb-2">Conception et simulation d’un système de régulation thermique</h2>
+                <div class="inline-block px-3 py-1 bg-green-100 text-emerald-700 text-xs font-bold rounded-full mb-6">Stagiaire R&D - INP Mexique</div>
+                
+                <p class="text-slate-600 mb-8 font-medium">Stage de développement d'ingénierie portant sur la régulation thermique d’un moteur via un contrôleur PID (Proportionnel–Intégral–Dérivé).</p>
+
+                <div class="space-y-6 text-slate-700 leading-relaxed text-sm">
+                    <div class="bg-green-50/50 p-5 rounded-xl border border-green-100 shadow-sm">
+                        <h4 class="text-green-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> Modélisation Numérique</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Modélisation du comportement thermique du moteur sous <strong>MATLAB/Simulink</strong> (fonction de transfert du second ordre).</li>
+                            <li>Réglages des paramètres du PID (méthode de Ziegler-Nichols).</li>
+                            <li>Objectif atteint : Stabilisation de la température à 80°C en moins de 40 000 secondes, avec un dépassement minimal.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-green-50/50 p-5 rounded-xl border border-green-100 shadow-sm">
+                        <h4 class="text-green-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4"></i> Électronique & Simulation</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Reproduction du régulateur PID sous forme analogique avec le logiciel <strong>Proteus</strong>.</li>
+                            <li>Utilisation d'amplificateurs opérationnels (AOP type TL084) pour l’action proportionnelle, intégrale et dérivée.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-green-50/50 p-5 rounded-xl border border-green-100 shadow-sm">
+                        <h4 class="text-green-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4"></i> Validation Matérielle</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Validation de la lecture de température en temps réel avec une carte <strong>Arduino Uno</strong>.</li>
+                            <li>Acquisition des données via un capteur thermocouple <strong>MAX6675</strong>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale Riester -->
+    <div id="modal-riester" class="modal">
+        <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
+            <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-riester')"><i data-lucide="x"></i></button>
+            
+            <div class="w-full md:w-1/2 h-full bg-slate-100 border-r border-slate-200 overflow-y-auto p-6 space-y-6 flex flex-col">
+                <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
+                    <img src="./images/detail-riester-1.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Remplacement+Batterie+HT'">
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
+                    <img src="./images/detail-riester-2.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Logiciel+de+Diagnostic'">
+                </div>
+            </div>
+
+            <div class="w-full md:w-1/2 p-12 overflow-y-auto">
+                <h2 class="text-4xl font-bold text-slate-900 mb-2">Technicien Automobile - Véhicules Hybrides & Électriques</h2>
+                <div class="inline-block px-3 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded-full mb-6">Groupe Riester (Stellantis)</div>
+                
+                <p class="text-slate-600 mb-8 font-medium">Diagnostic, réparation et mise en sécurité des systèmes haute tension sur une gamme variée de véhicules électriques et hybrides.</p>
+
+                <div class="space-y-6 text-slate-700 leading-relaxed text-sm">
+                    <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100 shadow-sm">
+                        <h4 class="text-orange-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="search" class="w-4 h-4"></i> Diagnostics Informatiques</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Utilisation poussée des outils constructeurs : <strong>Witech</strong> (Fiat, Jeep), <strong>Diagbox</strong> (Opel < 2021) et <strong>GDS</strong> (Opel > 2021).</li>
+                            <li>Recherche de pannes, lecture de codes défauts, et réalisation d'apprentissages calculateurs.</li>
+                            <li>Tests de santé de batteries 12V avec le testeur Exteq.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100 shadow-sm">
+                        <h4 class="text-orange-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="zap" class="w-4 h-4"></i> Interventions Haute Tension</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Remplacement de <strong>batterie de traction</strong> (ex: Jeep Wrangler - batterie de 110 kg).</li>
+                            <li>Remplacement d'<strong>onduleurs convertisseurs</strong> et de <strong>chargeurs embarqués</strong>.</li>
+                            <li>Respect strict des protocoles de consignation et de mise en sécurité (EPI, procédures de coupure).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100 shadow-sm">
+                        <h4 class="text-orange-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="wrench" class="w-4 h-4"></i> Réparations Électroniques Diverses</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Diagnostic et réparation de problèmes du système AdBlue (injecteur d'urée).</li>
+                            <li>Remplacement et reprogrammation de <strong>Boîtier de Servitude Intelligent (BSI)</strong>.</li>
+                            <li>Réparation de faisceaux défectueux (ex: système Airbag).</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modale TurtleBot (Enrichi avec SAE5ESE01.pdf) -->
