@@ -410,12 +410,12 @@
                             <img src="./images/image-turtlebot.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="TurtleBot" onerror="this.src='https://via.placeholder.com/800x500?text=TurtleBot'">
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
-                            <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-primary transition">Navigation Autonome TurtleBot</h3>
-                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Déplacement autonome d'un point A à un point B avec l'aide d'un capteur Lidar.</p>
-                            <div class="flex gap-3">
-                                <span class="skill-badge skill-green">ROS</span>
-                                <span class="skill-badge skill-green">Lidar</span>
-                                <span class="skill-badge skill-green">Python</span>
+                            <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-primary transition">Robot Mobile & Evitement d'Obstacles</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Développement d'une application multitâche (RTOS) pour le pilotage d'un robot avec Lidar et recherche de cible par caméra.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-badge skill-green">RTOS</span>
+                                <span class="skill-badge skill-green">LIDAR</span>
+                                <span class="skill-badge skill-green">STM32F446RE</span>
                             </div>
                         </div>
                     </div>
@@ -433,11 +433,12 @@
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
                             <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-blue-600 transition">Station IoT LoRaWAN</h3>
-                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Système complet de surveillance environnementale. Capteurs I2C, Microcontrôleur STM32 et transmission radio.</p>
-                            <div class="flex gap-3">
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Système complet de surveillance environnementale. Capteur I2C (SHT31), Nucleo L432KC, et monitoring sur le Cloud (Tago.io).</p>
+                            <div class="flex flex-wrap gap-3">
                                 <span class="skill-badge skill-blue">KiCad</span>
                                 <span class="skill-badge skill-blue">SHT31</span>
-                                <span class="skill-badge skill-blue">LoRa</span>
+                                <span class="skill-badge skill-blue">TTN</span>
+                                <span class="skill-badge skill-blue">Tago.io</span>
                             </div>
                         </div>
                     </div>
@@ -455,11 +456,11 @@
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
                             <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-orange-500 transition">Oscilloscope Numérique</h3>
-                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Conception d'un outil de mesure. Chaîne d'acquisition analogique (AOP), filtrage et numérisation.</p>
-                            <div class="flex gap-3">
-                                <span class="skill-badge skill-orange">Analogique</span>
-                                <span class="skill-badge skill-orange">PCB</span>
-                                <span class="skill-badge skill-orange">TLV272</span>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Conception d'une carte d'acquisition de données (adaptation d'impédance, CAN) communicant via USB avec une interface PC.</p>
+                            <div class="flex flex-wrap gap-3">
+                                <span class="skill-badge skill-orange">STM32 Nucleo</span>
+                                <span class="skill-badge skill-orange">PCB KiCad</span>
+                                <span class="skill-badge skill-orange">AOP TLV272</span>
                             </div>
                         </div>
                     </div>
@@ -469,8 +470,8 @@
                             <img src="./images/image-robot.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Robot" onerror="this.src='https://via.placeholder.com/800x500?text=Robot'">
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
-                            <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-yellow-600 transition">Robot Mobile</h3>
-                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Robot éviteur d'obstacles autonome. Programmation Arduino C++ et intégration capteurs.</p>
+                            <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-yellow-600 transition">Robot Mobile (Base)</h3>
+                            <p class="text-slate-600 mb-6 leading-relaxed text-lg">Robot éviteur d'obstacles autonome de 1ère année. Programmation Arduino C++ et intégration de capteurs ultrasons.</p>
                              <div class="flex gap-3">
                                 <span class="skill-badge skill-yellow">Arduino</span>
                                 <span class="skill-badge skill-yellow">C++</span>
@@ -599,7 +600,6 @@
             </div>
 
             <h2 class="text-4xl font-bold text-slate900 mb-16">Me Contacter</h2>
-            <!-- Grille passée en 2 colonnes au lieu de 3, avec une max-width réduite pour que ça soit bien centré -->
             <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
                 <a href="mailto:mertenswahil@gmail.com" class="glass-panel hover-blue p-10 flex flex-col items-center gap-6 group">
                     <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="mail" class="w-8 h-8"></i></div>
@@ -623,12 +623,11 @@
         <button class="absolute top-6 right-6 text-white p-3 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-8 h-8"></i></button>
     </div>
 
-    <!-- Modale TurtleBot -->
+    <!-- Modale TurtleBot (Enrichi avec SAE5ESE01.pdf) -->
     <div id="modal-turtlebot" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-turtlebot')"><i data-lucide="x"></i></button>
             
-            <!-- CONTENEUR IMAGE REFORMATÉ -->
             <div class="w-full md:w-1/2 h-full bg-slate-100 border-r border-slate-200 overflow-y-auto p-6 space-y-6 flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
                     <img src="./images/detail-turtlebot-1.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Turtlebot'">
@@ -639,28 +638,50 @@
             </div>
 
             <div class="w-full md:w-1/2 p-12 overflow-y-auto">
-                <h2 class="text-4xl font-bold text-slate-900 mb-2">Navigation Autonome TurtleBot</h2>
-                <div class="inline-block px-3 py-1 bg-green-100 text-primary text-xs font-bold rounded-full mb-8">SAÉ 5.01 - BUT 3</div>
-                <div class="space-y-8 text-slate-700 leading-relaxed text-sm">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="text-slate-900 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="target" class="w-4 h-4 text-primary"></i> Objectif</h4>
-                        <p>Programmer un robot mobile TurtleBot pour qu'il se déplace de manière autonome d'un point A à un point B dans un environnement inconnu.</p>
+                <h2 class="text-4xl font-bold text-slate-900 mb-2">Robot Mobile & Évitement d'Obstacles</h2>
+                <div class="inline-block px-3 py-1 bg-green-100 text-primary text-xs font-bold rounded-full mb-6">SAÉ 5.02 ESE - BUT 3</div>
+                
+                <p class="text-slate-600 mb-8 font-medium">Développement et validation d'une application multitâche pour le pilotage d'un robot mobile autonome avec LIDAR et recherche de cible par caméra.</p>
+
+                <div class="space-y-6 text-slate-700 leading-relaxed text-sm">
+                    <div class="bg-green-50/50 p-5 rounded-xl border border-green-100 shadow-sm">
+                        <h4 class="text-green-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> 1. Architecture Matérielle</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li><strong>STM32F446RE</strong> (Cible ARM) comme processeur principal.</li>
+                            <li><strong>LIDAR</strong> pour la détection d'obstacles (Acquisition de données).</li>
+                            <li><strong>Raspberry Pi Pico / Caméra</strong> pour le système autonome de recherche de cible.</li>
+                            <li>Module de communication <strong>Bluetooth</strong> pour le suivi de l'activité.</li>
+                            <li>Capteurs embarqués: Accéléromètre, Gyromètre, Encodeurs et Courant.</li>
+                        </ul>
                     </div>
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="text-slate-900 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-primary"></i> Technologie</h4>
-                        <ul class="list-disc list-inside space-y-2 ml-2"><li>Capteur Lidar 360°.</li><li>OS ROS sur Raspberry Pi.</li><li>Navigation Stack.</li><li>Langage Python.</li></ul>
+
+                    <div class="bg-green-50/50 p-5 rounded-xl border border-green-100 shadow-sm">
+                        <h4 class="text-green-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4"></i> 2. Développement Logiciel</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Mise en œuvre d'un <strong>Système d'Exploitation Temps Réel (RTOS)</strong>.</li>
+                            <li>Gestion multitâche: utilisation de <strong>Thread, Mutex et Sémaphores</strong> pour fiabiliser le code.</li>
+                            <li>Communication entre systèmes embarqués par bus (SPI, I2C).</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-green-50/50 p-5 rounded-xl border border-green-100 shadow-sm">
+                        <h4 class="text-green-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="move" class="w-4 h-4"></i> 3. Commande & Modélisation</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Conception bas niveau de la commande des <strong>moteurs à courant continu (MCC)</strong>.</li>
+                            <li>Modélisation de la cinématique du robot mobile.</li>
+                            <li>Commande dans l'espace de la tâche pour un déplacement fluide.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
-    <!-- Modale LoRaWAN (Rapport enrichi) -->
+    <!-- Modale LoRaWAN (Enrichi avec Rapport_SAE_4.02_MERTENS.pdf) -->
     <div id="modal-lora" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-lora')"><i data-lucide="x"></i></button>
             
-            <!-- CONTENEUR IMAGE REFORMATÉ -->
             <div class="w-full md:w-1/2 h-full bg-slate-100 border-r border-slate-200 overflow-y-auto p-6 space-y-6 flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
                     <img src="./images/detail-lora-1.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=PCB+et+Composants'">
@@ -672,45 +693,37 @@
 
             <div class="w-full md:w-1/2 p-12 overflow-y-auto">
                 <h2 class="text-4xl font-bold text-slate-900 mb-2">Station Météo LoRaWAN</h2>
-                <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-6">SAE 4.02 - ESE 2</div>
+                <div class="inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full mb-6">SAÉ 4.02 ESE - BUT 2</div>
                 
-                <p class="text-slate-600 mb-8 font-medium">Projet de développement complet d'une station météorologique autonome : de la conception de la carte mère jusqu'à la visualisation sur Dashboard via une architecture IoT.</p>
+                <p class="text-slate-600 mb-8 font-medium">Conception et développement d'un système complet IoT pour la surveillance environnementale : routage du PCB, capteurs, gestion d'énergie et dashboard.</p>
 
                 <div class="space-y-6 text-slate-700 leading-relaxed text-sm">
                     
                     <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 shadow-sm">
-                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> 1. Conception Hardware</h4>
+                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> 1. Conception Hardware & Énergie</h4>
                         <ul class="list-disc list-inside space-y-1 ml-2">
-                            <li>Création du schéma et routage PCB sous <strong>KiCad</strong>.</li>
-                            <li>Microcontrôleur : <strong>STM32</strong> (Basse consommation).</li>
-                            <li>Capteurs intégrés en I2C : <strong>SHT31</strong> (Température/Humidité) & BME280.</li>
+                            <li>Création du schéma et routage PCB (2 couches) sous <strong>KiCad V7</strong>.</li>
+                            <li>Microcontrôleur : <strong>Nucleo L432KC (STM32)</strong> avec régulateur ADP3338 (+3.3V).</li>
+                            <li>Capteur <strong>SHT31</strong> en liaison <strong>I2C</strong> (Mesure Température/Humidité).</li>
+                            <li>Système autonome : Batterie Li-ion 3.7V et <strong>BMS (TP4056)</strong> avec pont diviseur pour protection.</li>
                         </ul>
                     </div>
 
                     <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 shadow-sm">
-                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="code" class="w-4 h-4"></i> 2. Développement Firmware</h4>
+                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4"></i> 2. Réseau & Transmission LoRa</h4>
                         <ul class="list-disc list-inside space-y-1 ml-2">
-                            <li>Programmation en <strong>C</strong> via STM32 HAL.</li>
-                            <li>Acquisition périodique des données capteurs.</li>
-                            <li>Gestion de l'énergie avec implémentation du <strong>Deep Sleep</strong>.</li>
-                        </ul>
-                    </div>
-
-                    <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 shadow-sm">
-                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="wifi" class="w-4 h-4"></i> 3. Réseau & Transmission LoRa</h4>
-                        <ul class="list-disc list-inside space-y-1 ml-2">
-                            <li>Paramétrage d'un transceiver LoRa (Commandes AT).</li>
+                            <li>Communication UART avec le module LoRa <strong>Nemeus XM001</strong>.</li>
+                            <li>Paramétrage avec Commandes AT (`AT+MAC=ON`, `AT+MAC=SNDBIN`).</li>
                             <li>Transmission sécurisée des payloads vers <strong>The Things Network (TTN)</strong>.</li>
-                            <li>Configuration des clés (DevEUI, AppEUI, AppKey).</li>
                         </ul>
                     </div>
 
                     <div class="bg-blue-50/50 p-5 rounded-xl border border-blue-100 shadow-sm">
-                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-4 h-4"></i> 4. Traitement & Dashboard</h4>
+                        <h4 class="text-blue-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="bar-chart-2" class="w-4 h-4"></i> 3. Cloud & Dashboard Client</h4>
                         <ul class="list-disc list-inside space-y-1 ml-2">
-                            <li>Décodage des payloads bruts (JavaScript Formatter).</li>
-                            <li>Connexion Webhook vers la plateforme <strong>TagoIO</strong>.</li>
-                            <li>Création d'un tableau de bord de suivi en temps réel.</li>
+                            <li>Routage de TTN vers le Cloud applicatif <strong>Tago.io</strong> (Webhook/MQTT).</li>
+                            <li>Décodage des payloads bruts via JavaScript Formatter.</li>
+                            <li>Création d'un <strong>Dashboard interactif</strong> (Visualisation en temps réel sur PC et mobile).</li>
                         </ul>
                     </div>
 
@@ -719,12 +732,11 @@
         </div>
     </div>
     
-    <!-- Modale Oscillo -->
+    <!-- Modale Oscillo (Enrichi avec SUJET OSCILLOSCOPEPartie1.pdf) -->
     <div id="modal-oscillo" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-oscillo')"><i data-lucide="x"></i></button>
             
-            <!-- CONTENEUR IMAGE REFORMATÉ -->
             <div class="w-full md:w-1/2 h-full bg-slate-100 border-r border-slate-200 overflow-y-auto p-6 space-y-6 flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
                     <img src="./images/detail-oscillo-1.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Vue+Oscillo'">
@@ -736,23 +748,44 @@
 
             <div class="w-full md:w-1/2 p-12 overflow-y-auto">
                 <h2 class="text-4xl font-bold text-slate-900 mb-2">Oscilloscope Numérique</h2>
-                <div class="inline-block px-3 py-1 bg-orange-100 text-orange-600 text-xs font-bold rounded-full mb-8">PROJET 1ÈRE ANNÉE</div>
-                <div class="space-y-8 text-slate-700 leading-relaxed text-sm">
-                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="text-slate-900 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4 text-orange-500"></i> Chaîne d'Acquisition</h4>
-                        <ul class="list-disc list-inside space-y-2 ml-2"><li>Analogique : Adaptation, Offset, Amplification (TLV272).</li><li>Protection Diodes.</li><li>Filtrage.</li></ul>
+                <div class="inline-block px-3 py-1 bg-orange-100 text-orange-600 text-xs font-bold rounded-full mb-6">SAÉ 3.ESE.01 - BUT 2</div>
+                
+                <p class="text-slate-600 mb-8 font-medium">Conception d'un oscilloscope numérique 1 voie (1MHz, 40V crête-à-crête) capable d'adapter, numériser et envoyer les données d'un signal vers un PC via USB.</p>
+
+                <div class="space-y-6 text-slate-700 leading-relaxed text-sm">
+                    
+                    <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100 shadow-sm">
+                        <h4 class="text-orange-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="settings" class="w-4 h-4"></i> 1. Carte d'Acquisition (Analogique)</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Alimentée en ±5V symétrique, avec conception d'une <strong>alimentation +3.3V</strong>.</li>
+                            <li><strong>Adaptation d'impédance</strong> d'entrée élevée (1 MΩ).</li>
+                            <li>Changement de <strong>couplage AC / DC</strong>.</li>
+                            <li>Amplification et atténuation programmables via des AOP (type <strong>TLV272</strong>).</li>
+                            <li>Circuit de déclenchement (<strong>Trigger</strong>) sur niveau et pente sélectionnables.</li>
+                            <li>Protection absolue contre les surtensions avant l'entrée du Convertisseur Analogique/Numérique.</li>
+                        </ul>
                     </div>
+
+                    <div class="bg-orange-50/50 p-5 rounded-xl border border-orange-100 shadow-sm">
+                        <h4 class="text-orange-700 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> 2. Logiciel Embarqué & Commande</h4>
+                        <ul class="list-disc list-inside space-y-1 ml-2">
+                            <li>Carte de traitement <strong>NUCLEO-F446RE</strong> (ARM CORTEX-M4 à 180 MHz).</li>
+                            <li>Gestion du <strong>CAN</strong> (résolution, et fréquence d'échantillonnage de 1 MHz).</li>
+                            <li>Interface logicielle pour recevoir les consignes de l'ordinateur (calibres, base de temps : de 10µs/div à 10s/div).</li>
+                            <li>Transfert des données numérisées via <strong>liaison USB</strong> pour l'affichage final.</li>
+                        </ul>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modale Robot -->
+    <!-- Modale Robot (1ère Année) -->
     <div id="modal-robot" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-robot')"><i data-lucide="x"></i></button>
             
-            <!-- CONTENEUR IMAGE REFORMATÉ -->
             <div class="w-full md:w-1/2 h-full bg-slate-100 border-r border-slate-200 overflow-y-auto p-6 space-y-6 flex flex-col">
                 <div class="relative rounded-xl overflow-hidden shadow-sm border border-slate-200 bg-white p-2">
                     <img src="./images/detail-robot-1.jpg" class="w-full h-auto object-contain max-h-[40vh] cursor-zoom-in hover:opacity-90 transition" onclick="openLightbox(this.src)" onerror="this.src='https://via.placeholder.com/800x400?text=Simulation+Tinkercad'">
@@ -763,12 +796,17 @@
             </div>
 
             <div class="w-full md:w-1/2 p-12 overflow-y-auto">
-                <h2 class="text-4xl font-bold text-slate-900 mb-2">Robot Mobile Autonome</h2>
+                <h2 class="text-4xl font-bold text-slate-900 mb-2">Robot Mobile (Base)</h2>
                 <div class="inline-block px-3 py-1 bg-yellow-100 text-yellow-600 text-xs font-bold rounded-full mb-8">SAÉ 2.01 - ESE 1</div>
                 <div class="space-y-8 text-slate-700 leading-relaxed text-sm">
-                     <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
-                        <h4 class="text-slate-900 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-yellow-500"></i> Matériel</h4>
-                        <ul class="list-disc list-inside space-y-2 ml-2"><li>Arduino UNO.</li><li>3 Capteurs Ultrasons.</li><li>Driver L293D.</li></ul>
+                     <div class="bg-yellow-50/50 p-6 rounded-2xl border border-yellow-100">
+                        <h4 class="text-slate-900 font-bold uppercase tracking-wider text-xs mb-3 flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4 text-yellow-500"></i> Matériel & Logique</h4>
+                        <ul class="list-disc list-inside space-y-2 ml-2">
+                            <li>Base microcontrôleur <strong>Arduino UNO</strong> programmé en C++.</li>
+                            <li>Utilisation de <strong>3 Capteurs Ultrasons</strong> pour détecter l'environnement proche.</li>
+                            <li>Pilotage des moteurs avec un Driver L293D.</li>
+                            <li>Conception d'un algorithme simple d'évitement d'obstacles autonome.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
