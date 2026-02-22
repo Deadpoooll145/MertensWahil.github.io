@@ -261,15 +261,15 @@
                                     <ul class="text-sm list-disc list-inside text-slate-600 space-y-1">
                                         <li>Élec. Embarquée</li>
                                         <li>Automatisme Ind.</li>
-                                        <li>Réseaux (LoRa)</li>
+                                        <li>Réseaux</li>
+                                        <li>Stage de 8 semaines</li>
                                     </ul>
                                 </div>
                                 <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                                     <h4 class="text-primary font-bold mb-3">3ème Année</h4>
                                     <ul class="text-sm list-disc list-inside text-slate-600 space-y-1">
-                                        <li>Robotique (ROS)</li>
                                         <li>Pilotage Systèmes</li>
-                                        <li>Stage Long</li>
+                                        <li>Stage de 14 semaines</li>
                                     </ul>
                                 </div>
                             </div>
@@ -408,8 +408,8 @@
                 <div class="grid md:grid-cols-2 gap-10">
                     <!-- TurtleBot -->
                     <div class="glass-panel hover-green overflow-hidden cursor-pointer group" onclick="openModal('modal-turtlebot')" data-aos="fade-up">
-                        <div class="h-64 bg-slate-100 relative overflow-hidden border-b border-slate-200">
-                            <img src="./images/image-turtlebot.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="TurtleBot" onerror="this.src='https://via.placeholder.com/800x500?text=TurtleBot'">
+                        <div class="h-64 bg-slate-50 relative overflow-hidden border-b border-slate-200 p-4 flex items-center justify-center">
+                            <img src="./images/image-turtlebot.jpg" class="w-full h-full object-contain group-hover:scale-105 transition duration-700 drop-shadow-sm" alt="TurtleBot" onerror="this.src='https://via.placeholder.com/800x500?text=TurtleBot'">
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
                             <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-primary transition">Robot Mobile & Evitement d'Obstacles</h3>
@@ -430,8 +430,8 @@
                 <div class="grid md:grid-cols-2 gap-10">
                     <!-- Station Météo -->
                     <div class="glass-panel hover-blue overflow-hidden cursor-pointer group" onclick="openModal('modal-lora')" data-aos="fade-up">
-                        <div class="h-64 bg-slate-100 relative overflow-hidden border-b border-slate-200">
-                            <img src="./images/image_SAE_Lorawan.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="LoRaWAN" onerror="this.src='https://via.placeholder.com/800x500'">
+                        <div class="h-64 bg-slate-50 relative overflow-hidden border-b border-slate-200 p-4 flex items-center justify-center">
+                            <img src="./images/image_SAE_Lorawan.png" class="w-full h-full object-contain group-hover:scale-105 transition duration-700 drop-shadow-sm" alt="LoRaWAN" onerror="this.src='https://via.placeholder.com/800x500'">
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
                             <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-blue-600 transition">Station IoT LoRaWAN</h3>
@@ -453,8 +453,8 @@
                 <div class="grid md:grid-cols-2 gap-10">
                     <!-- Oscillo -->
                     <div class="glass-panel hover-orange overflow-hidden cursor-pointer group" onclick="openModal('modal-oscillo')" data-aos="fade-up">
-                        <div class="h-64 bg-slate-100 relative overflow-hidden border-b border-slate-200">
-                            <img src="./images/image-PID-Proteus.png" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Oscillo" onerror="this.src='https://via.placeholder.com/800x500'">
+                        <div class="h-64 bg-slate-50 relative overflow-hidden border-b border-slate-200 p-4 flex items-center justify-center">
+                            <img src="./images/image-PID-Proteus.png" class="w-full h-full object-contain group-hover:scale-105 transition duration-700 drop-shadow-sm" alt="Oscillo" onerror="this.src='https://via.placeholder.com/800x500'">
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
                             <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-orange-500 transition">Oscilloscope Numérique</h3>
@@ -468,8 +468,8 @@
                     </div>
                     <!-- Robot -->
                     <div class="glass-panel hover-yellow overflow-hidden cursor-pointer group" onclick="openModal('modal-robot')" data-aos="fade-up" data-aos-delay="100">
-                        <div class="h-64 bg-slate-100 relative overflow-hidden flex items-center justify-center border-b border-slate-200">
-                            <img src="./images/image-robot.jpg" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" alt="Robot" onerror="this.src='https://via.placeholder.com/800x500?text=Robot'">
+                        <div class="h-64 bg-slate-50 relative overflow-hidden flex items-center justify-center border-b border-slate-200 p-4">
+                            <img src="./images/image-robot.jpg" class="w-full h-full object-contain group-hover:scale-105 transition duration-700 drop-shadow-sm" alt="Robot" onerror="this.src='https://via.placeholder.com/800x500?text=Robot'">
                         </div>
                         <div class="p-8 bg-white group-hover:bg-transparent transition">
                             <h3 class="text-2xl font-bold text-slate900 mb-3 group-hover:text-yellow-600 transition">Robot Mobile (Base)</h3>
@@ -602,7 +602,7 @@
 
             <h2 class="text-4xl font-bold text-slate900 mb-16">Me Contacter</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                <a href="mailto:mertenswahil@gmail.com" class="glass-panel hover-blue p-10 flex flex-col items-center gap-6 group">
+                <a onclick="openModal('modal-email')" class="glass-panel hover-blue p-10 flex flex-col items-center gap-6 group cursor-pointer">
                     <div class="w-16 h-16 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition duration-300 transform group-hover:scale-110"><i data-lucide="mail" class="w-8 h-8"></i></div>
                     <span class="text-base text-slate-700 font-mono font-medium">mertenswahil@gmail.com</span>
                 </a>
@@ -622,6 +622,24 @@
     <div id="lightbox" class="modal z-[2000]" onclick="closeLightbox()">
         <img id="lightbox-img" class="lightbox-img transition-all duration-300 transform scale-95" src="" onclick="event.stopPropagation()">
         <button class="absolute top-6 right-6 text-white p-3 rounded-full hover:bg-white/20 transition"><i data-lucide="x" class="w-8 h-8"></i></button>
+    </div>
+
+    <!-- Modale Copie Email -->
+    <div id="modal-email" class="modal">
+        <div class="bg-white rounded-3xl w-full max-w-md p-8 relative modal-content shadow-2xl border border-slate-200 text-center">
+            <button class="absolute top-4 right-4 text-slate-400 hover:text-red-500 transition p-2 bg-slate-50 rounded-full" onclick="closeModal('modal-email')"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="w-20 h-20 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mx-auto mb-6"><i data-lucide="mail" class="w-10 h-10"></i></div>
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Mon adresse email</h3>
+            <p class="text-slate-600 mb-6 text-sm">Copiez l'adresse ci-dessous pour m'envoyer un message directement depuis votre boîte mail.</p>
+            
+            <div class="flex items-center gap-2 bg-slate-50 border border-slate-200 p-3 rounded-xl mb-6">
+                <input type="text" id="email-input" value="mertenswahil@gmail.com" readonly class="bg-transparent flex-grow text-slate-700 font-mono text-center outline-none w-full text-lg">
+            </div>
+            
+            <button onclick="copyEmail()" id="copy-btn" class="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition flex items-center justify-center gap-2 shadow-lg shadow-blue-200">
+                <i data-lucide="copy" id="copy-icon" class="w-5 h-5"></i> <span id="copy-text">Copier l'email</span>
+            </button>
+        </div>
     </div>
 
     <!-- Modale IPN (Stage Mexique) -->
@@ -726,7 +744,7 @@
         </div>
     </div>
 
-    <!-- Modale TurtleBot (Enrichi avec SAE5ESE01.pdf) -->
+    <!-- Modale TurtleBot -->
     <div id="modal-turtlebot" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-turtlebot')"><i data-lucide="x"></i></button>
@@ -780,7 +798,7 @@
         </div>
     </div>
     
-    <!-- Modale LoRaWAN (Enrichi avec Rapport_SAE_4.02_MERTENS.pdf) -->
+    <!-- Modale LoRaWAN -->
     <div id="modal-lora" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-lora')"><i data-lucide="x"></i></button>
@@ -835,7 +853,7 @@
         </div>
     </div>
     
-    <!-- Modale Oscillo (Enrichi avec SUJET OSCILLOSCOPEPartie1.pdf) -->
+    <!-- Modale Oscillo -->
     <div id="modal-oscillo" class="modal">
         <div class="bg-white rounded-3xl w-full max-w-6xl h-[85vh] flex flex-col md:flex-row overflow-hidden relative modal-content shadow-2xl border border-slate-200">
             <button class="absolute top-6 right-6 text-slate-400 z-20 hover:text-red-500 transition bg-white/80 p-2 rounded-full backdrop-blur-sm" onclick="closeModal('modal-oscillo')"><i data-lucide="x"></i></button>
@@ -920,12 +938,88 @@
     <script>
         lucide.createIcons();
         AOS.init({ once: true, duration: 800 });
-        function openModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('hidden'); m.style.display='flex'; setTimeout(() => m.classList.add('active'), 10); document.body.style.overflow = 'hidden'; }}
-        function closeModal(id) { const m = document.getElementById(id); if(m){ m.classList.remove('active'); setTimeout(() => { m.style.display='none'; m.classList.add('hidden'); }, 300); document.body.style.overflow = 'auto'; }}
-        document.querySelectorAll('.modal').forEach(m => { m.addEventListener('click', e => { if(e.target === m && m.id !== 'lightbox') closeModal(m.id); }); });
-        function toggleSection(id, iconId) { const c = document.getElementById(id); const i = document.getElementById(iconId); c.classList.toggle('open'); i.classList.toggle('rotate-180'); }
-        function openLightbox(src) { const lb = document.getElementById('lightbox'); const img = document.getElementById('lightbox-img'); img.src = src; lb.classList.remove('hidden'); lb.classList.add('active'); setTimeout(() => img.classList.remove('scale-95'), 50); }
-        function closeLightbox() { const lb = document.getElementById('lightbox'); const img = document.getElementById('lightbox-img'); img.classList.add('scale-95'); lb.classList.remove('active'); setTimeout(() => lb.classList.add('hidden'), 300); }
+        
+        function openModal(id) { 
+            const m = document.getElementById(id); 
+            if(m) { 
+                m.classList.remove('hidden'); 
+                m.style.display='flex'; 
+                setTimeout(() => m.classList.add('active'), 10); 
+                document.body.style.overflow = 'hidden'; 
+            }
+        }
+        
+        function closeModal(id) { 
+            const m = document.getElementById(id); 
+            if(m) { 
+                m.classList.remove('active'); 
+                setTimeout(() => { 
+                    m.style.display='none'; 
+                    m.classList.add('hidden'); 
+                }, 300); 
+                document.body.style.overflow = 'auto'; 
+                
+                // Revenir à l'état initial du bouton copier si c'est la modale d'email
+                if (id === 'modal-email') {
+                    const btnText = document.getElementById('copy-text');
+                    const btnIcon = document.getElementById('copy-icon');
+                    if (btnText) btnText.innerText = "Copier l'email";
+                    if (btnIcon) btnIcon.setAttribute('data-lucide', 'copy');
+                    lucide.createIcons();
+                }
+            }
+        }
+        
+        document.querySelectorAll('.modal').forEach(m => { 
+            m.addEventListener('click', e => { 
+                if(e.target === m && m.id !== 'lightbox') closeModal(m.id); 
+            }); 
+        });
+        
+        function toggleSection(id, iconId) { 
+            const c = document.getElementById(id); 
+            const i = document.getElementById(iconId); 
+            c.classList.toggle('open'); 
+            i.classList.toggle('rotate-180'); 
+        }
+        
+        function openLightbox(src) { 
+            const lb = document.getElementById('lightbox'); 
+            const img = document.getElementById('lightbox-img'); 
+            img.src = src; 
+            lb.classList.remove('hidden'); 
+            lb.classList.add('active'); 
+            setTimeout(() => img.classList.remove('scale-95'), 50); 
+        }
+        
+        function closeLightbox() { 
+            const lb = document.getElementById('lightbox'); 
+            const img = document.getElementById('lightbox-img'); 
+            img.classList.add('scale-95'); 
+            lb.classList.remove('active'); 
+            setTimeout(() => lb.classList.add('hidden'), 300); 
+        }
+        
+        // Fonction pour copier l'email
+        function copyEmail() {
+            const input = document.getElementById('email-input');
+            input.select();
+            input.setSelectionRange(0, 99999); // Pour les mobiles
+            document.execCommand('copy');
+            
+            const btnText = document.getElementById('copy-text');
+            const btnIcon = document.getElementById('copy-icon');
+            
+            btnText.innerText = "Copié !";
+            btnIcon.setAttribute('data-lucide', 'check');
+            lucide.createIcons();
+            
+            setTimeout(() => {
+                btnText.innerText = "Copier l'email";
+                btnIcon.setAttribute('data-lucide', 'copy');
+                lucide.createIcons();
+            }, 3000);
+        }
     </script>
 </body>
 </html>
